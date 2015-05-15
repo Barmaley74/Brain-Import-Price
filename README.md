@@ -1,6 +1,7 @@
 # Brain-Import-Price
 Plugin for WordPress/WooCommerce for import data from CSV file
-/**************************************************************/
+
+
 Plugin for WordPress / WooCommerce, which imports the data from the supplier price-list in CSV format in the database. It is based on a free plugin Product Importer from Vasser Labs. Unlike the original plugin, fundamentally changed the procedure for the selection of columns CSV-file to associate with the necessary fields WooCommerce.
 Main features of the plugin:
 - Import fields SKU, Name, Description, Product Categories.
@@ -10,7 +11,8 @@ Main features of the plugin:
 - Automatic generation of Tags for Products based on the fields: Category and Vendor.
 - Function of the random generation of a specified quantity of Products to the first page of an online store with a Sale price (based on the above margins).
 - Support for plugin fields All In One SEO Pack
-/**************************************************************/
+
+
 Плагин для WordPress/WooCommerce, который импортирует данные прайс-листа поставщика в формате CSV в базу данных. Сделан на основе бесплатного плагина Product Importer от Vasser Labs. В отличие от оригинального плагина, принципиально изменен порядок выбора колонок CSV-файла для связывания с необходимыми полями WooCommerce.
 Основные возможности плагина:
 - импорт полей Партномер, Название, Краткое описание, Категория товара. 
