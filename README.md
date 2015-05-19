@@ -11,6 +11,7 @@ Main features of the plugin:
 - Automatic generation of Tags for Products based on the fields: Category and Vendor.
 - Function of the random generation of a specified quantity of Products to the first page of an online store with a Sale price (based on the above margins).
 - Support for plugin fields All In One SEO Pack
+
 TestData folder consist test CSV file for verify plugin
 
 Плагин для WordPress/WooCommerce, который импортирует данные прайс-листа поставщика в формате CSV в базу данных. Сделан на основе бесплатного плагина Product Importer от Vasser Labs. В отличие от оригинального плагина, принципиально изменен порядок выбора колонок CSV-файла для связывания с необходимыми полями WooCommerce.
@@ -22,4 +23,5 @@ TestData folder consist test CSV file for verify plugin
 - автоматическая генерация меток для товара, основываясь на полях: Категория и Производитель.
 - функция случайной генерации указанного количества товаров для первой страницы интернет-магазина с ценой распродажи (основывается на указанной наценке).
 - поддержка полей плагина All In One SEO Pack
+
 В папке TestData находится тестовый файл CSV для проверки работоспособности плагина
