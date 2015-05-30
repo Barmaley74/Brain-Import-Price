@@ -98,23 +98,27 @@ function woo_bip_set_image ( $ID, $url, $gallery) {
     if (!file_exists($targetDir . '/' . $image_name)) {
         $image_filename = wp_unique_filename($targetDir, $image_name);
         $image_filepath = $targetDir . '/' . $image_filename;
-        file_put_contents($image_filepath, file_get_contents($url));
-        $image_info = @getimagesize($image_filepath);
-        $attachment = array(
-            'post_mime_type' => image_type_to_mime_type($image_info[2]),
-            'guid' => $targetDir . '/' . $image_filename,
-            'post_title' => $image_filename,
-            'post_content' => '',
-        );
-        $attid = wp_insert_attachment($attachment, $image_filepath, $ID);
-        wp_update_attachment_metadata($attid, wp_generate_attachment_metadata($attid, $image_filepath));
-        if ($gallery == '') {
-            set_post_thumbnail($ID, $attid);
-            $gallery = '_';
-        } else {
-            ($gallery == '_') ? $gallery = $attid : $gallery .= ',' . $attid;
-            update_post_meta($ID, '_product_image_gallery', $gallery);
-        }
+                $image = @file_get_contents($url);
+                if (!empty($image)) {
+                    file_put_contents($image_filepath, $image);
+                    $image_info = @getimagesize($image_filepath);
+                    $attachment = array(
+                        'post_mime_type' => image_type_to_mime_type($image_info[2]),
+                        'guid' => $targetDir . '/' . $image_filename,
+                        'post_title' => $image_filename,
+                        'post_content' => '',
+                    );
+                    $attid = wp_insert_attachment($attachment, $image_filepath, $ID);
+                    wp_update_attachment_metadata($attid, wp_generate_attachment_metadata($attid, $image_filepath));
+                    if ($gallery == '') {
+                        set_post_thumbnail($ID, $attid);
+                        $gallery = '_';
+                    } else {
+                        ($gallery == '_') ? $gallery = $attid : $gallery .= ',' . $attid;
+                        update_post_meta($ID, '_product_image_gallery', $gallery);
+                    }
+                }
+
     }
 
     return $gallery;
@@ -126,6 +130,7 @@ function woo_bip_parsing( $ID, $url, $name )
 {
 
     global $import;
+    $descrptn = '';
 
     // Included parameters
     // Подключаем параметры
@@ -135,50 +140,50 @@ function woo_bip_parsing( $ID, $url, $name )
     include_once(WOO_BIP_PATH . 'classes/simple_html_dom.php');
     // Take out the contents of the file
     // Вытаскиваем содержимое файла
-    $html = file_get_html($url);
-
-    // First photo
-    // Первое фото
-    $gallery = '';
-    foreach ($html->find('.active') as $list_img) {
-        if (strstr($el->href, 'jpg')) {
-            // выводим их значение атрибута href
-            $gallery = woo_bip_set_image($ID, $el->href, $gallery);
-            $import->log .= "<br />>>>>>> " . __('Getting Image file: ', 'woo_bip' ) . $el->href;
-        }
-    }
-
-    // Another photo
-    // Остальные фото
-    foreach ($html->find('.photo') as $list_img) {
-        foreach ($list_img->find('a') as $el) {
+        $html = file_get_html($url);
+        // First photo
+        // Первое фото
+    if ($html !== false) {
+        $gallery = '';
+        foreach ($html->find('.active') as $list_img) {
             if (strstr($el->href, 'jpg')) {
                 // выводим их значение атрибута href
                 $gallery = woo_bip_set_image($ID, $el->href, $gallery);
-                $import->log .= "<br />>>>>>> " . __('Getting Image file: ', 'woo_bip' ) . $el->href;
+                $import->log .= "<br />>>>>>> " . __('Getting Image file: ', 'woo_bip') . $el->href;
             }
         }
-    }
 
-    $descrptn = '';
-    // Founded a long description
-    // Находим длинное описание
-    foreach ($html->find('.description') as $el) {
-        foreach ($html->find('.description') as $el) {
-            // Remove unnecessary phrases and symbols
-            // Убираем ненужные фразы и символы
-            $descrptn = sanitize_text_field($el->plaintext);
-            for ($i = 0 ; $i < count($excludes); $i++)
-                $descrptn = str_replace($excludes[$i], ' ', $descrptn);
-            $descrptn = str_replace($name, ' ', $descrptn);
+        // Another photo
+        // Остальные фото
+        foreach ($html->find('.photo') as $list_img) {
+            foreach ($list_img->find('a') as $el) {
+                if (strstr($el->href, 'jpg')) {
+                    // выводим их значение атрибута href
+                    $gallery = woo_bip_set_image($ID, $el->href, $gallery);
+                    $import->log .= "<br />>>>>>> " . __('Getting Image file: ', 'woo_bip') . $el->href;
+                }
+            }
         }
 
-    }
+        // Founded a long description
+        // Находим длинное описание
+        foreach ($html->find('.description') as $el) {
+            foreach ($html->find('.description') as $el) {
+                // Remove unnecessary phrases and symbols
+                // Убираем ненужные фразы и символы
+                $descrptn = sanitize_text_field($el->plaintext);
+                for ($i = 0; $i < count($excludes); $i++)
+                    $descrptn = str_replace($excludes[$i], ' ', $descrptn);
+                $descrptn = str_replace($name, ' ', $descrptn);
+            }
 
-    // Cleans up after itself
-    // Подчищаем за собой
-    $html->clear();
-    unset($html);
+        }
+
+        // Cleans up after itself
+        // Подчищаем за собой
+        $html->clear();
+        unset($html);
+    }
 
     // Returns a description of replacing the first letter in the title
     // Возвращаем описание, заменив первую букву на заглавную
@@ -215,7 +220,7 @@ function woo_bip_parsing( $ID, $url, $name )
         $product->supplier_code = (isset($import->csv_supplier_code) && isset($import->csv_supplier_code[$count]) ? $import->csv_supplier_code[$count] : null);
         $product->product_url = (isset($import->csv_product_url) && isset($import->csv_product_url[$count]) ? $import->csv_product_url[$count] : null);
         $product->warranty = (isset($import->csv_warranty) && isset($import->csv_warranty[$count]) ? $import->csv_warranty[$count] : null);
-        $product->tag = (isset($import->csv_category) && isset($import->csv_category[$count]) ? $import->csv_category[$count] . $import->category_separator . $import->csv_vendor[$count] : null);
+        $product->tag = (isset($import->csv_category) && isset($import->csv_category[$count]) ? $import->csv_category[$count] . '|' . $import->csv_vendor[$count] : null);
 
         foreach ($product as $key => $value) {
             if (!is_array($value) && $value !== null)
@@ -324,7 +329,7 @@ function woo_bip_parsing( $ID, $url, $name )
                 'sku' => $product->sku,
                 'name' => $product->name,
                 'price' => $product->price,
-                'category' => str_replace($import->category_separator, "<br />", str_replace($import->parent_child_delimiter, ' &raquo; ', $product->category)),
+                'category' => $product->category,
                 'reason' => $failed_reason
             );
             return true;
@@ -374,14 +379,16 @@ function woo_bip_parsing( $ID, $url, $name )
                     'product_type' => 'simple'
                 )
             );
+
         if( !$product->duplicate_exists )
             $product->ID = wp_insert_post($post_data, true);
         else {
-            $product->ID = $wpdb->get_var("SELECT `post_id` FROM `wp_postmeta` WHERE `meta_key`='_sku' AND `meta_value`='".$product->sku."'");
-            $wpdb->flush();
+            if ($import->only_price == 0) {
+                $product->ID = $wpdb->get_var("SELECT `post_id` FROM `wp_postmeta` WHERE `meta_key`='_sku' AND `meta_value`='" . $product->sku . "'");
+                $wpdb->flush();
                 wp_update_post($product);
+            }
         }
-
         if (is_wp_error($product->ID) !== true) {
 
             // Manually refresh the Post GUID
@@ -389,7 +396,6 @@ function woo_bip_parsing( $ID, $url, $name )
             $wpdb->update($wpdb->posts, array(
                 'guid' => sprintf('%s/?post_type=%s&p=%d', get_bloginfo('url'), $post_type, $product->ID)
             ), array('ID' => $product->ID));
-
             woo_bip_create_product_defaults();
             woo_bip_create_product_details();
             if (function_exists('wc_delete_product_transients'))
@@ -456,64 +462,8 @@ function woo_bip_parsing( $ID, $url, $name )
 
         global $wpdb, $product, $import, $user_ID;
 
-        // Insert SKU
-        // Добавляем партномер
-        if ($product->sku !== null) {
-            if (WOO_BIP_DEBUG !== true)
-                update_post_meta($product->ID, '_sku', $product->sku);
-            if ($import->advanced_log)
-                $import->log .= "<br />>>>>>> " . sprintf(__('Setting SKU: %s', 'woo_bip'), $product->sku);
-            else
-                $import->log .= "<br />>>>>>> " . __('Setting SKU', 'woo_bip');
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping SKU', 'woo_bip');
-        }
-
-        // Insert Price
-        // Добавляем цену
-        if ($product->price !== null) {
-            if (WOO_BIP_DEBUG !== true) {
-                update_post_meta($product->ID, '_regular_price', $product->price);
-                update_post_meta($product->ID, '_price', $product->price);
-            }
-            if ($import->advanced_log)
-                $import->log .= "<br />>>>>>> " . sprintf(__('Setting Price: %s', 'woo_bip'), $product->price);
-            else
-                $import->log .= "<br />>>>>>> " . __('Setting Price', 'woo_bip');
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping Price', 'woo_bip');
-        }
-
-        // Insert Vendor
-        // Добавляем производителя
-        if ($product->vendor !== null) {
-            if (WOO_BIP_DEBUG !== true) {
-                update_post_meta($product->ID, 'vendor', $product->vendor);
-            }
-            if ($import->advanced_log)
-                $import->log .= "<br />>>>>>> " . sprintf(__('Setting Vendor: %s', 'woo_bip'), $product->vendor);
-            else
-                $import->log .= "<br />>>>>>> " . __('Setting Vendor', 'woo_bip');
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping Vendor', 'woo_bip');
-        }
-
-        // Insert Supplier Code
-        // Добавляем код поставщика
-        if ($product->supplier_code !== null) {
-            if (WOO_BIP_DEBUG !== true) {
-                update_post_meta($product->ID, 'supplier_code', $product->supplier_code);
-            }
-            if ($import->advanced_log)
-                $import->log .= "<br />>>>>>> " . sprintf(__('Setting Supplier Code: %s', 'woo_bip'), $product->supplier_code);
-            else
-                $import->log .= "<br />>>>>>> " . __('Setting Supplier Code', 'woo_bip');
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping Supplier Code', 'woo_bip');
-        }
-
-        // Insert Supplier Price
-        // Добавляем цену поставщика
+// Insert Supplier Price
+// Добавляем цену поставщика
         if ($product->supplier_price !== null) {
             if (WOO_BIP_DEBUG !== true) {
                 update_post_meta($product->ID, 'supplier_price', $product->supplier_price);
@@ -526,80 +476,138 @@ function woo_bip_parsing( $ID, $url, $name )
             $import->log .= "<br />>>>>>> " . __('Skipping Supplier Price', 'woo_bip');
         }
 
-        // Insert Warranty
-        // Добавляем гарантию
-        if ($product->warranty !== null) {
-            if (WOO_BIP_DEBUG !== true) {
-                update_post_meta($product->ID, 'warranty', $product->warranty);
-            }
-            if ($import->advanced_log)
-                $import->log .= "<br />>>>>>> " . sprintf(__('Setting Warranty: %s', 'woo_bip'), $product->warranty);
-            else
-                $import->log .= "<br />>>>>>> " . __('Setting Warranty', 'woo_bip');
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping Warranty', 'woo_bip');
-        }
+        if ($import->only_price == 0 || !$product->duplicate_exists ) {
 
-        // Insert Images and Long Description from Product URL
-        // Добавляем изображения и длинное описание со ссылки товара с сайта поставщика
-        if ($product->product_url !== null) {
-            if (WOO_BIP_DEBUG !== true) {
-                $descrpton = woo_bip_parsing($product->ID, $product->product_url, $product->name);
-                $my_post = array(
-                    'ID'           => $product->ID,
-                    'post_content' => $descrpton
-                );
-                // Update the post into the database
-                wp_update_post( $my_post );
+            // Insert SKU
+            // Добавляем партномер
+            if ($product->sku !== null) {
+                if (WOO_BIP_DEBUG !== true)
+                    update_post_meta($product->ID, '_sku', $product->sku);
+                if ($import->advanced_log)
+                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting SKU: %s', 'woo_bip'), $product->sku);
+                else
+                    $import->log .= "<br />>>>>>> " . __('Setting SKU', 'woo_bip');
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping SKU', 'woo_bip');
             }
-            if ($import->advanced_log)
-                $import->log .= "<br />>>>>>> " . sprintf(__('Setting Images and Long Description from: %s', 'woo_bip'), $product->product_url);
-            else
-                $import->log .= "<br />>>>>>> " . __('Setting Images and Long Description', 'woo_bip');
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping Images and Long Description', 'woo_bip');
-        }
 
-        // Insert Category
-        // Добавляем категорию
-        $term_taxonomy = 'product_cat';
-        if (!empty($product->category_term_id)) {
-            $term_taxonomy_ids = wp_set_object_terms($product->ID, array_unique(array_map('intval', $product->category_term_id)), $term_taxonomy);
-            if ($import->advanced_log) {
-                if (count($product->category_term_id) == 1)
-                    $import->log .= "<br />>>>>>> " . sprintf(__('Linking Category: %s', 'woo_bip'), $product->category);
+            // Insert Price
+            // Добавляем цену
+            if ($product->price !== null) {
+                if (WOO_BIP_DEBUG !== true) {
+                    update_post_meta($product->ID, '_regular_price', $product->price);
+                    update_post_meta($product->ID, '_price', $product->price);
+                }
+                if ($import->advanced_log)
+                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting Price: %s', 'woo_bip'), $product->price);
                 else
-                    $import->log .= "<br />>>>>>> " . sprintf(__('Linking Categories: %s', 'woo_bip'), $product->category);
-            } else {
-                if (count($product->category_term_id) == 1)
-                    $import->log .= "<br />>>>>>> " . __('Linking Category', 'woo_bip');
-                else
-                    $import->log .= "<br />>>>>>> " . __('Linking Categories', 'woo_bip');
+                    $import->log .= "<br />>>>>>> " . __('Setting Price', 'woo_bip');
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping Price', 'woo_bip');
             }
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping Category', 'woo_bip');
-        }
 
-        // Insert Tag
-        // Добавляем метку
-        $term_taxonomy = 'product_tag';
-        if (!empty($product->tag_term_id)) {
-            $term_taxonomy_ids = wp_set_object_terms($product->ID, array_unique(array_map('intval', $product->tag_term_id)), $term_taxonomy);
-            if ($import->advanced_log) {
-                if (count($product->tag_term_id) == 1)
-                    $import->log .= "<br />>>>>>> " . sprintf(__('Linking Tag: %s', 'woo_bip'), $product->tag);
+            // Insert Vendor
+            // Добавляем производителя
+            if ($product->vendor !== null) {
+                if (WOO_BIP_DEBUG !== true) {
+                    update_post_meta($product->ID, 'vendor', $product->vendor);
+                }
+                if ($import->advanced_log)
+                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting Vendor: %s', 'woo_bip'), $product->vendor);
                 else
-                    $import->log .= "<br />>>>>>> " . sprintf(__('Linking Tags: %s', 'woo_bip'), $product->tag);
-            } else {
-                if (count($product->tag_term_id) == 1)
-                    $import->log .= "<br />>>>>>> " . __('Linking Tag', 'woo_bip');
-                else
-                    $import->log .= "<br />>>>>>> " . __('Linking Tags', 'woo_bip');
+                    $import->log .= "<br />>>>>>> " . __('Setting Vendor', 'woo_bip');
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping Vendor', 'woo_bip');
             }
-        } else if ($import->advanced_log) {
-            $import->log .= "<br />>>>>>> " . __('Skipping Tag', 'woo_bip');
-        }
 
+            // Insert Supplier Code
+            // Добавляем код поставщика
+            if ($product->supplier_code !== null) {
+                if (WOO_BIP_DEBUG !== true) {
+                    update_post_meta($product->ID, 'supplier_code', $product->supplier_code);
+                }
+                if ($import->advanced_log)
+                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting Supplier Code: %s', 'woo_bip'), $product->supplier_code);
+                else
+                    $import->log .= "<br />>>>>>> " . __('Setting Supplier Code', 'woo_bip');
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping Supplier Code', 'woo_bip');
+            }
+
+            // Insert Warranty
+            // Добавляем гарантию
+            if ($product->warranty !== null) {
+                if (WOO_BIP_DEBUG !== true) {
+                    update_post_meta($product->ID, 'warranty', $product->warranty);
+                }
+                if ($import->advanced_log)
+                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting Warranty: %s', 'woo_bip'), $product->warranty);
+                else
+                    $import->log .= "<br />>>>>>> " . __('Setting Warranty', 'woo_bip');
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping Warranty', 'woo_bip');
+            }
+
+            // Insert Images and Long Description from Product URL
+            // Добавляем изображения и длинное описание со ссылки товара с сайта поставщика
+            if ($product->product_url !== null) {
+                if (WOO_BIP_DEBUG !== true) {
+                    $descrpton = woo_bip_parsing($product->ID, $product->product_url, $product->name);
+                    $my_post = array(
+                        'ID' => $product->ID,
+                        'post_content' => $descrpton
+                    );
+                    // Update the post into the database
+                    wp_update_post($my_post);
+                }
+                if ($import->advanced_log)
+                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting Images and Long Description from: %s', 'woo_bip'), $product->product_url);
+                else
+                    $import->log .= "<br />>>>>>> " . __('Setting Images and Long Description', 'woo_bip');
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping Images and Long Description', 'woo_bip');
+            }
+
+            // Insert Category
+            // Добавляем категорию
+            $term_taxonomy = 'product_cat';
+            if (!empty($product->category_term_id)) {
+                $term_taxonomy_ids = wp_set_object_terms($product->ID, array_unique(array_map('intval', $product->category_term_id)), $term_taxonomy);
+                if ($import->advanced_log) {
+                    if (count($product->category_term_id) == 1)
+                        $import->log .= "<br />>>>>>> " . sprintf(__('Linking Category: %s', 'woo_bip'), $product->category);
+                    else
+                        $import->log .= "<br />>>>>>> " . sprintf(__('Linking Categories: %s', 'woo_bip'), $product->category);
+                } else {
+                    if (count($product->category_term_id) == 1)
+                        $import->log .= "<br />>>>>>> " . __('Linking Category', 'woo_bip');
+                    else
+                        $import->log .= "<br />>>>>>> " . __('Linking Categories', 'woo_bip');
+                }
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping Category', 'woo_bip');
+            }
+
+            // Insert Tag
+            // Добавляем метку
+            $term_taxonomy = 'product_tag';
+            if (!empty($product->tag_term_id)) {
+                $term_taxonomy_ids = wp_set_object_terms($product->ID, array_unique(array_map('intval', $product->tag_term_id)), $term_taxonomy);
+                if ($import->advanced_log) {
+                    if (count($product->tag_term_id) == 1)
+                        $import->log .= "<br />>>>>>> " . sprintf(__('Linking Tag: %s', 'woo_bip'), $product->tag);
+                    else
+                        $import->log .= "<br />>>>>>> " . sprintf(__('Linking Tags: %s', 'woo_bip'), $product->tag);
+                } else {
+                    if (count($product->tag_term_id) == 1)
+                        $import->log .= "<br />>>>>>> " . __('Linking Tag', 'woo_bip');
+                    else
+                        $import->log .= "<br />>>>>>> " . __('Linking Tags', 'woo_bip');
+                }
+            } else if ($import->advanced_log) {
+                $import->log .= "<br />>>>>>> " . __('Skipping Tag', 'woo_bip');
+            }
+
+        }
     }
-
 ?>

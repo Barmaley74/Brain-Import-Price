@@ -187,8 +187,6 @@ function woo_bip_tab_template( $tab = '' ) {
 			$timeout = woo_bip_get_option( 'timeout', 0 );
 			$encoding = woo_bip_get_option( 'encoding', 'UTF-8' );
 			$delimiter = woo_bip_get_option( 'delimiter', ',' );
-			$category_separator = woo_bip_get_option( 'category_separator', '|' );
-			$parent_child_delimiter = woo_bip_get_option( 'parent_child_delimiter', '>' );
 			$file_encodings = ( function_exists( 'mb_list_encodings' ) ? mb_list_encodings() : false );
 			break;
 

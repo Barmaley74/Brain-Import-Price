@@ -18,21 +18,8 @@ function woo_bip_generate_categories() {
 			return;
 		}
 		for( ; $i < $size; $i++ ) {
-			if( isset( $import->csv_category[$i] ) && strpos( $import->csv_category[$i], $import->category_separator ) ) {
-				$base_categories_explode = explode( $import->category_separator, $import->csv_category[$i] );
-				$base_categories_explode_size = count( $base_categories_explode );
-				for( $j = 0; $j < $base_categories_explode_size; $j++ )
-					$base_categories[] = $base_categories_explode[$j];
-			} else {
-				if( isset( $import->csv_category_1[$i] ) && isset( $import->csv_category_2[$i] ) && isset( $import->csv_category_3[$i] ) )
-					$base_categories[] = $import->csv_category[$i] . $import->parent_child_delimiter . $import->csv_category_1[$i] . $import->parent_child_delimiter . $import->csv_category_2[$i] . $import->parent_child_delimiter . $import->csv_category_3[$i];
-				else if( isset( $import->csv_category_1[$i] ) && isset( $import->csv_category_2[$i] ) )
-					$base_categories[] = $import->csv_category[$i] . $import->parent_child_delimiter . $import->csv_category_1[$i] . $import->parent_child_delimiter . $import->csv_category_2[$i];
-				else if( isset( $import->csv_category_1[$i] ) )
-					$base_categories[] = $import->csv_category[$i] . $import->parent_child_delimiter . $import->csv_category_1[$i];
-				else if( isset( $import->csv_category[$i] ) )
+				if( isset( $import->csv_category[$i] ) )
 					$base_categories[] = $import->csv_category[$i];
-			}
 		}
 		unset( $size );
 		if( $import->skip_first == 1)
@@ -41,49 +28,25 @@ function woo_bip_generate_categories() {
 			$i = 0;
 		$term_taxonomy = 'product_cat';
 		$size = count( $base_categories );
-		$include_log = true;
+            $include_log = true;
 		if( $size > 1000 ) {
 			$import->log .= "<br />>>> " . sprintf( __( 'We have just processed and generated so many Product Categories that we couldn\'t actually show you it in real-time, ~%d to be precise', 'woo_bip' ), $size );
 			$include_log = false;
 		}
 		for( ; $i < $size; $i++ ) {
-			$base_categories_explode = explode( $import->parent_child_delimiter, $base_categories[$i] );
-			$base_categories_explode_size = count( $base_categories_explode );
-			for( $j = 0; $j < $base_categories_explode_size; $j++ ) {
-				$category = new stdClass;
-				$category->contents = $base_categories_explode;
-				switch( $j ) {
-
-					case '0':
+				$category = $base_categories[$i];
+            $import->log .= "<br />>>> " .$base_categories[$i].' - '.$category;
 						if( $include_log )
-							$import->log .= "<br />>>> " . sprintf( __( 'Category: %s', 'woo_bip' ), trim( $category->contents[0] ) );
-						if( !term_exists( trim( $category->contents[0] ), $term_taxonomy ) )
-							$term = wp_insert_term( htmlspecialchars( trim( $category->contents[0] ) ), $term_taxonomy );
+							$import->log .= "<br />>>> " . sprintf( __( 'Category: %s', 'woo_bip' ), trim( $category ) );
+						if( !term_exists( trim( $category ), $term_taxonomy ) )
+							$term = wp_insert_term( htmlspecialchars( trim( $category ) ), $term_taxonomy );
 						if( $include_log ) {
 							if( isset( $term ) && $term )
-								$import->log .= "<br />>>>>>> " . sprintf( __( 'Created Category: %s', 'woo_bip' ), trim( $category->contents[0] ) );
+								$import->log .= "<br />>>>>>> " . sprintf( __( 'Created Category: %s', 'woo_bip' ), trim( $category ) );
 							else
-								$import->log .= "<br />>>>>>> " . sprintf( __( 'Duplicate of Category detected: %s', 'woo_bip' ), trim( $category->contents[0] ) );
+								$import->log .= "<br />>>>>>> " . sprintf( __( 'Duplicate of Category detected: %s', 'woo_bip' ), trim( $category ) );
 						}
-						break;
-
-					default:
-						$skipped_category_size = $j;
-						if( $include_log ) {
-							$import->log .= "<br />>>> " . sprintf( __( 'Category: %s', 'woo_bip' ), trim( $category->contents[$j] ) );
-							for( $k = 0; $k <= $skipped_category_size; $k++ )
-								$import->log .= trim( $category->contents[$k] ) . ' > ';
-							$import->log = substr( $import->log, 0, -3 );
-							$import->log .= "<br />>>>>>> " . sprintf( __( 'Skipped Category: %s', 'woo_bip' ), trim( $category->contents[$j] ) );
-							if( $j > 0 ) {
-								$import->log .= " - " . __( 'Skipped Categories '.$j, 'woo_bip' );
-							}
-						}
-						break;
-
-				}
 				unset( $category, $term );
-			}
 		}
 		unset( $size );
 		$import->log .= "<br />" . __( 'Categories have been generated', 'woo_bip' );
@@ -102,7 +65,7 @@ function woo_bip_process_categories() {
 	$product->category_term_id = array();
 	$pid_categories = array();
 	if( isset( $product->category ) ) {
-		if( strpos( $product->category, $import->category_separator ) ) {
+		/*if( strpos( $product->category, $import->category_separator ) ) {
 			$pid_categories_explode = explode( $import->category_separator, $product->category );
 			$size = count( $pid_categories_explode );
 			for( $i = 0; $i < $size; $i++ )
@@ -110,13 +73,17 @@ function woo_bip_process_categories() {
 			unset( $pid_categories_explode, $size );
 		} else {
 			$pid_categories[] = trim( $product->category );
-		}
+		}*/
 		$term_taxonomy = 'product_cat';
 		// Get a list of Product Categories
-		$db_categories_sql = $wpdb->prepare( "SELECT terms.`term_id`, terms.`name`, term_taxonomy.`parent` as category_parent FROM `" . $wpdb->terms . "` as terms, `" . $wpdb->term_taxonomy . "` as term_taxonomy WHERE terms.`term_id` = term_taxonomy.`term_id` AND term_taxonomy.`taxonomy` = %s", $term_taxonomy );
-		$db_categories = $wpdb->get_results( $db_categories_sql );
+		$db_categories_sql = $wpdb->prepare( "SELECT terms.`term_id` FROM `"
+            . $wpdb->terms . "` as terms, `" . $wpdb->term_taxonomy . "` as term_taxonomy WHERE terms.`term_id` = term_taxonomy.`term_id`"
+            . " AND terms.`name` = %s AND term_taxonomy.`taxonomy` = %s", $product->category, $term_taxonomy );
+		$db_category = $wpdb->get_var( $db_categories_sql );
 		$wpdb->flush();
-		foreach( $pid_categories as $pid_category ) {
+        $product->category_term_id[] = $db_category;
+        $import->log .= "<br />>> " . $db_category . ' - '.$product->category;
+		/*foreach( $pid_categories as $pid_category ) {
 			$pid_categorydata = explode( $import->parent_child_delimiter, $pid_category );
 			$pid_categorydata_size = count( $pid_categorydata );
 			for( $k = 0; $k < $pid_categorydata_size; $k++ ) {
@@ -133,7 +100,7 @@ function woo_bip_process_categories() {
 
 				}
 			}
-		}
+		}*/
 	}
 
 }

@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: WooCommerce - Brain Import Price
-Plugin URI: http://www.neo.poltava.ua/
+Plugin URI: https://github.com/Barmaley74/Brain-Import-Price
 Description: Import new Products into your WooCommerce store from Brain price.
-Version: 1.0
+Version: 1.0.1
 Author: Serhiy Vlasevych
 Author URI: http://www.neo.poltava.ua/
 License: GPL2

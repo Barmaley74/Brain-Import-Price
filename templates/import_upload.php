@@ -24,7 +24,7 @@
                             <option></option>
                         <?php foreach( $first_row as $key => $cell ) { ?>
                             <?php $k++;?>
-                            <option value="<?php echo $key; ?>"<?php selected(woo_bip_get_option($option['name']),$k ); ?>><?php echo $cell.': '.woo_bip_format_cell_preview( $second_row[$key], $key, $cell ); ?></option>
+                            <option value="<?php echo $key; ?>"<?php selected(woo_bip_get_option($option['name']),$k ); ?>><?php echo $cell.': '. $second_row[$key]; ?></option>
                     	<?php } ?>
 						</select>
 				</tr>
@@ -50,6 +50,11 @@
 										<label><input type="checkbox" name="advanced_log"<?php checked( $import->advanced_log, 1 ); ?> value="1" />&nbsp;<?php _e( 'Advanced import reporting', 'woo_bip' ); ?></label>
 										<p class="description"><?php _e( 'This option will provide a more detailed import log but comes at the expense of a slower import process. Default is off.', 'woo_bip' ); ?></p>
 									</li>
+                                    <li>
+                                        <label><input type="checkbox" name="only_price"<?php checked( $import->only_price, 1 ); ?> value="1" />&nbsp;<?php _e( 'Only price update', 'woo_bip' ); ?></label>
+                                        <p class="description"><?php _e( 'Updates only supplier price for existing products.', 'woo_bip' ); ?></p>
+                                    </li>
+                                    <li>
 <?php if( !ini_get( 'safe_mode' ) ) { ?>
 									<li>
 										<label for="timeout"><?php _e( 'Script timeout', 'woo_bip' ); ?>: </label>
@@ -77,8 +82,6 @@
 		<?php wp_nonce_field( 'update-options' ); ?>
 		<input type="hidden" name="action" value="save" />
 		<input type="hidden" name="delimiter" value="<?php echo $import->delimiter; ?>" />
-		<input type="hidden" name="category_separator" value="<?php echo $import->category_separator; ?>" />
-		<input type="hidden" name="parent_child_delimiter" value="<?php echo $import->parent_child_delimiter; ?>" />
 		<p class="submit">
 			<input type="submit" value="<?php _e( 'Upload file and import', 'woo_bip' ); ?>" class="button-primary" />
 		</p>

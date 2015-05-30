@@ -80,24 +80,6 @@
 					<p class="description"><?php _e( 'The field delimiter is the character separating each cell in your CSV. This is typically the \',\' (comma) character.', 'woo_bip' ); ?></p>
 				</td>
 			</tr>
-			<tr>
-				<th>
-					<label for="category_separator"><?php _e( 'Category separator', 'woo_bip' ); ?></label>
-				</th>
-				<td>
-					<input type="text" size="3" id="category_separator" name="category_separator" value="<?php echo $category_separator; ?>" maxlength="1" class="text" />
-					<p class="description"><?php _e( 'The Product Category separator allows you to assign individual Products to multiple Product Categories/Tags/Images at a time. It is suggested to use the \'|\' (vertical pipe) character between each item. For instance: <code>Clothing|Mens|Shirts</code>.', 'woo_bip' ); ?></p>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label for="parent_child_delimiter"><?php _e( 'Product Category heirachy delimiter', 'woo_bip' ); ?></label>
-				</th>
-				<td>
-					<input type="text" size="3" id="parent_child_delimiter" name="parent_child_delimiter" value="<?php echo $parent_child_delimiter; ?>" size="1" class="text" />
-					<p class="description"><?php _e( 'The Product Category heirachy delimiter links Products Categories in parent/child relationships. It is suggested to use the \'>\' character between each Product Category. For instance: <code>Clothing>Mens>Shirts</code>', 'woo_bip' ); ?>.</p>
-				</td>
-			</tr>
 
 		</tbody>
 	</table>

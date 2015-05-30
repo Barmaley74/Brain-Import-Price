@@ -15,8 +15,6 @@ function beginImport() {
 		'log' : ajaxImport.settings.log,
 		'advanced_log' : ajaxImport.settings.advanced_log,
 		'delimiter' : ajaxImport.settings.delimiter,
-		'category_separator' : ajaxImport.settings.category_separator,
-		'parent_child_delimiter' : ajaxImport.settings.parent_child_delimiter,
 		'delete_file' : ajaxImport.settings.delete_file,
 		'skip_first' : ajaxImport.settings.skip_first,
 		'default_weight_unit' : ajaxImport.settings.default_weight_unit,

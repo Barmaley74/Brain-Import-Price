@@ -26,8 +26,8 @@ function woo_bip_generate_tags() {
 			if( isset( $import->csv_tag[$i] ) ) {
 				// Check if this cell contains multiple Tags
                 // Проверяем если ячейка содержит множественные метки
-				if( strpos( $import->csv_tag[$i], $import->category_separator ) ) {
-					$tags_explode = explode( $import->category_separator, $import->csv_tag[$i] );
+				if( strpos( $import->csv_tag[$i], '|' ) ) {
+					$tags_explode = explode( '|', $import->csv_tag[$i] );
 					for( $j = 0; $j < count( $tags_explode ); $j++ ) {
 						if( isset( $tags_explode[$j] ) && trim( $tags_explode[$j] ) !== '' )
 							$tags[] = trim( $tags_explode[$j] );
@@ -89,8 +89,8 @@ function woo_bip_process_tags() {
 		$term_taxonomy = 'product_tag';
 		// Check if this cell contains multiple Tags
         // Проверяем если ячейка содержит множественные метки
-		if( strpos( $product->tag, $import->category_separator ) ) {
-			$tags = explode( $import->category_separator, $product->tag );
+		if( strpos( $product->tag, '|' ) ) {
+			$tags = explode( '|', $product->tag );
 			$size = count( $tags );
 			for( $i = 0; $i < $size; $i++ ) {
 				if( $tag = get_term_by( 'name', $tags[$i], $term_taxonomy ) )

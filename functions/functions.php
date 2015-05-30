@@ -92,8 +92,6 @@ if( is_admin() ) {
 				woo_bip_update_option( 'encoding', ( isset( $_POST['encoding'] ) ? sanitize_text_field( $_POST['encoding'] ) : 'UTF-8' ) );
 				woo_bip_update_option( 'timeout', ( isset( $_POST['timeout'] ) ? absint( $_POST['timeout'] ) : 0 ) );
 				woo_bip_update_option( 'delimiter', ( isset( $_POST['delimiter'] ) ? sanitize_text_field( $_POST['delimiter'] ) : ',' ) );
-				woo_bip_update_option( 'category_separator', ( isset( $_POST['category_separator'] ) ? sanitize_text_field( $_POST['category_separator'] ) : '|' ) );
-				woo_bip_update_option( 'parent_child_delimiter', ( isset( $_POST['parent_child_delimiter'] ) ? sanitize_text_field( $_POST['parent_child_delimiter'] ) : '>' ) );
 
 				$message = __( 'Settings saved.', 'woo_bip' );
 				woo_bip_admin_notice( $message );
@@ -128,8 +126,6 @@ if( is_admin() ) {
 					$import->delimiter = 'TAB';
 				if( $import->delimiter == '' || $import->delimiter == false )
 					$import->delimiter = ',';
-				$import->category_separator = woo_bip_get_option( 'category_separator', '|' );
-				$import->parent_child_delimiter = woo_bip_get_option( 'parent_child_delimiter', '>' );
 				$import->delete_file = woo_bip_get_option( 'delete_file', 0 );
 				$import->encoding = woo_bip_get_option( 'encoding', 'UTF-8' );
 				break;
@@ -140,6 +136,7 @@ if( is_admin() ) {
 				$import = new stdClass;
 				$import->cancel_import = false;
                 $import->skip_first = absint( woo_bip_get_option( 'skip_first', 1 ) );
+                $import->only_price = absint( woo_bip_get_option( 'only_price', 1 ) );
                 $import->upload_method = ( isset( $_POST['upload_method'] ) ? $_POST['upload_method'] : 'upload' );
 				$import->import_method = sanitize_text_field( woo_bip_get_option( 'import_method', 'new' ) );
 				$import->advanced_log = absint( woo_bip_get_option( 'advanced_log', 1 ) );
@@ -148,8 +145,6 @@ if( is_admin() ) {
 				$import->delimiter = ( isset( $_POST['delimiter'] ) ? substr( $_POST['delimiter'], 0, 3 ) : ',' );
 				if( $import->delimiter == 'TAB' )
 					$import->delimiter = "\t";
-				$import->category_separator = ( isset( $_POST['category_separator'] ) ? sanitize_text_field( $_POST['category_separator'] ) : '|' );
-				$import->parent_child_delimiter = ( isset( $_POST['parent_child_delimiter'] ) ? sanitize_text_field( $_POST['parent_child_delimiter'] ) : '>' );
 				$import->delete_file = absint( woo_bip_get_option( 'delete_file', 0 ) );
 				$import->encoding = ( isset( $_POST['encoding'] ) ? sanitize_text_field( $_POST['encoding'] ) : 'UTF-8' );
 				$import->timeout = absint( woo_bip_get_option( 'timeout', 600 ) );
@@ -160,8 +155,6 @@ if( is_admin() ) {
 				woo_bip_update_option( 'rate', $import->rate );
 				woo_bip_update_option( 'trade_margin', $import->trade_margin );
 				woo_bip_update_option( 'delimiter', $import->delimiter );
-				woo_bip_update_option( 'category_separator', $import->category_separator );
-				woo_bip_update_option( 'parent_child_delimiter', $import->parent_child_delimiter );
 				woo_bip_update_option( 'encoding', $import->encoding );
 
 				// Capture the CSV file uploaded
@@ -234,7 +227,7 @@ if( is_admin() ) {
 				}
 				// Check if the delimiter is set
 				// Проверяем установлен ли разделитель
-				if( $import->delimiter == '' || $import->category_separator == '' ) {
+				if( $import->delimiter == '' ) {
 					$import->cancel_import = true;
 					$message = sprintf( __( 'You cannot leave the Field delimiter or Product Category separator options under Import Options empty. <a href="%s" target="_blank">Need help?</a>', 'woo_bip' ), $troubleshooting_url );
 					woo_bip_admin_notice( $message, 'error' );
@@ -271,14 +264,14 @@ if( is_admin() ) {
 				$import->rate = woo_bip_get_option( 'rate' );
 				$import->trade_margin = woo_bip_get_option( 'trade_margin' );
 				$import->delimiter = woo_bip_get_option( 'delimiter', ',' );
-				$import->category_separator = woo_bip_get_option( 'category_separator', '|' );
-				$import->parent_child_delimiter = woo_bip_get_option( 'parent_child_delimiter', '>' );
 				$import->delete_file = woo_bip_get_option( 'delete_file', 0 );
 				$import->encoding = woo_bip_get_option( 'encoding', 'UTF-8' );
                 $import->skip_first = ( isset( $_POST['skip_first'] ) ? 1 : 0 );
+                $import->only_price = ( isset( $_POST['only_price'] ) ? 1 : 0 );
 				$import->import_method = 'new' ;
 				$import->advanced_log = ( isset( $_POST['advanced_log'] ) ? 1 : 0 );
 				woo_bip_update_option( 'import_method', $import->import_method );
+                woo_bip_update_option( 'only_price', absint( $import->only_price ) );
                 woo_bip_update_option( 'skip_first', absint( $import->skip_first ) );
 				woo_bip_update_option( 'advanced_log', absint( $import->advanced_log ) );
 				if( isset( $_POST['timeout'] ) )
@@ -305,6 +298,7 @@ if( is_admin() ) {
 						$transient->log .= "<br /><br />" . __( 'Generating Products...', 'woo_bip' );
 					$settings = array(
 						'skip_first' => $transient->skip_first,
+                        'only_price' => $transient->only_price,
 						'import_method' => ( isset( $_POST['import_method'] ) ? sanitize_text_field( $_POST['import_method'] ) : 'new' ),
 						'restart_from' => ( isset( $_POST['restart_from'] ) ? absint( (int)$_POST['restart_from'] ) : 0 ),
 						'progress' => ( isset( $_POST['progress'] ) ? absint( $_POST['progress'] ) : 0 ),
@@ -343,15 +337,15 @@ if( is_admin() ) {
     // Основная фукнция импорта AJAX
 	function woo_bip_ajax_brain_import_price() {
 
-		if( isset( $_POST['step'] ) ) {
+        global $import;
 
-			global $import;
+ 		if( isset( $_POST['step'] ) ) {
 
 			@ini_set( 'memory_limit', WP_MAX_MEMORY_LIMIT );
 
 			ob_start();
 
-			// Split the CSV data from the main transient
+            // Split the CSV data from the main transient
             // Разделение данных CSV
 			if( $_POST['step'] != 'prepare_data' ) {
 				$import = get_transient( WOO_BIP_PREFIX . '_import' );
@@ -415,15 +409,13 @@ if( is_admin() ) {
 					$import->rate = $_POST['rate'];
 					$import->trade_margin = $_POST['trade_margin'];
 					$import->delimiter = $_POST['delimiter'];
-					$import->category_separator = $_POST['category_separator'];
-					$import->parent_child_delimiter = $_POST['parent_child_delimiter'];
 					$import->delete_file = woo_bip_get_option( 'delete_file', 0 );
 					$import->import_method = 'new' ;
                     $import->skip_first = ( isset( $_POST['skip_first'] ) ? (int)$_POST['skip_first'] : 0 );
+                    $import->only_price = woo_bip_get_option( 'only_price' );;
                     $import->advanced_log = ( isset( $_POST['advanced_log'] ) ? (int)$_POST['advanced_log'] : 0 );
 					$import->log .= '<br />' . sprintf( __( 'Import method: %s', 'woo_bip' ), $import->import_method );
-
-                    woo_bip_prepare_data( 'prepare_data' );
+                        woo_bip_prepare_data( 'prepare_data' );
 
                     if( $import->advanced_log )
 						$import->log .= "<br />" . __( 'Validating required columns...', 'woo_bip' );
@@ -505,7 +497,6 @@ if( is_admin() ) {
 					}
 
 					$import->product_start_time = microtime( true );
-
 					if( in_array( $import->import_method, array( 'new' ) ) ) {
 						// Build Categories
                         // Строим категории
@@ -519,9 +510,7 @@ if( is_admin() ) {
 					// Check for duplicate SKU
                     // Проверяем дублирование партномеров
 					woo_bip_duplicate_product_exists();
-
 					woo_bip_validate_product();
-
 					if( $product->fail_requirements ) {
 
 						if( $import->advanced_log )
@@ -672,6 +661,7 @@ if( is_admin() ) {
 					}
 				}
 			}
+
 			$response = set_transient( WOO_BIP_PREFIX . '_import', $import );
 			// Check if the Transient was saved
             // Проверяем что временные значения были сохранены
@@ -699,11 +689,10 @@ if( is_admin() ) {
 				$return['html'] = $import->html;
 			if( isset( $import->step ) )
 				$return['step'] = $import->step;
-
 			@array_map( 'utf8_encode', $return );
-
 			header( "Content-type: application/json" );
 			echo json_encode( $return );
+
 		}
 		die();
 
@@ -991,9 +980,6 @@ function woo_bip_format_cell_preview( $output = '', $key = '', $cell = '' ) {
 	);
 	foreach( $matches as $match ) {
 		if( strpos( strtolower( $cell ), $match ) !== false ) {
-			// Count the number of Category separators
-            // Считаем количество разделителей категорий
-			$size = ( substr_count( $output, $import->category_separator ) + 1 );
 			if( !empty( $output ) ) {
 				$output = str_replace( $import->category_separator, "<br />", $output ). "<br />";
 				return $output;
@@ -1398,7 +1384,7 @@ function woo_bip_tag_array() {
     else
         $i = 0;
     for( ; $i < $size; $i++ )
-        $tags[$i] = $import->csv_category[$i] . $import->category_separator . $import->csv_vendor[$i];
+        $tags[$i] = $import->csv_category[$i] . '|' . $import->csv_vendor[$i];
 
         return $tags;
 }
