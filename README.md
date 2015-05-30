@@ -25,3 +25,10 @@ TestData folder consist test CSV file for verify plugin
 - поддержка полей плагина All In One SEO Pack
 
 В папке TestData находится тестовый файл CSV для проверки работоспособности плагина
+
+== Changelog ==
+== Перечень изменений ==
+
+= 1.0.1 = 
+***** Reworked the algorithm downloading images from the server vendor - errors may occur in case of problems with the server. ***** Переработан алгоритм загрузки изображений с сервера поставщика - исключены ошибки в случае проблем с сервером
+***** Added option - Import only suppliers prices for the existing products - to accelerate the daily load of supplier's price. ***** Добавлена опция - Импортировать только цены поставщика для существующих товаров - для ускорения процесса ежедневной загрузки прайса поставщика
