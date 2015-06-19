@@ -84,7 +84,7 @@
 						</td>
 					</tr>
 
-				</table>
+                </table>
 			</div>
 			<!-- .inside -->
 		</div>

@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce - Brain Import Price
 Plugin URI: https://github.com/Barmaley74/Brain-Import-Price
 Description: Import new Products into your WooCommerce store from Brain price.
-Version: 1.0.1
+Version: 1.1.0
 Author: Serhiy Vlasevych
 Author URI: http://www.neo.poltava.ua/
 License: GPL2
@@ -26,6 +26,7 @@ define( 'WOO_BIP_DEBUG', false );
 
 include_once( WOO_BIP_PATH . 'functions/common.php' );
 include_once( WOO_BIP_PATH . 'functions/functions.php' );
+include_once( WOO_BIP_PATH . 'classes/wcm_brands.php' );
 
 // Register localization for Plugin
 // Регистрация плагина для локализации

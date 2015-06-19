@@ -30,12 +30,12 @@ function woo_bip_generate_tags() {
 					$tags_explode = explode( '|', $import->csv_tag[$i] );
 					for( $j = 0; $j < count( $tags_explode ); $j++ ) {
 						if( isset( $tags_explode[$j] ) && trim( $tags_explode[$j] ) !== '' )
-							$tags[] = trim( $tags_explode[$j] );
+							$tags[] = sanitize_text_field( $tags_explode[$j] );
 					}
 					unset( $tags_explode );
 				} else {
 					if( isset( $import->csv_tag[$i] ) && trim( $import->csv_tag[$i] ) !== '' )
-						$tags[] = trim( $import->csv_tag[$i] );
+						$tags[] = sanitize_text_field($import->csv_tag[$i] );
 				}
 			}
 		}
@@ -93,13 +93,13 @@ function woo_bip_process_tags() {
 			$tags = explode( '|', $product->tag );
 			$size = count( $tags );
 			for( $i = 0; $i < $size; $i++ ) {
-				if( $tag = get_term_by( 'name', $tags[$i], $term_taxonomy ) )
+				if( $tag = get_term_by( 'name', sanitize_text_field($tags[$i]), $term_taxonomy ))
 					$product->tag_term_id[] = $tag->term_id;
 				unset( $tag );
 			}
 			unset( $tags );
 		} else {
-			if( $tag = get_term_by( 'name', $product->tag, $term_taxonomy ) )
+			if( $tag = get_term_by( 'name', sanitize_text_field($product->tag), $term_taxonomy ))
 				$product->tag_term_id[] = $tag->term_id;
 			unset( $tag );
 		}

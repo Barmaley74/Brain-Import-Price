@@ -34,17 +34,16 @@ function woo_bip_generate_categories() {
 			$include_log = false;
 		}
 		for( ; $i < $size; $i++ ) {
-				$category = $base_categories[$i];
-            $import->log .= "<br />>>> " .$base_categories[$i].' - '.$category;
+				$category = sanitize_text_field( $base_categories[$i]);
 						if( $include_log )
-							$import->log .= "<br />>>> " . sprintf( __( 'Category: %s', 'woo_bip' ), trim( $category ) );
-						if( !term_exists( trim( $category ), $term_taxonomy ) )
-							$term = wp_insert_term( htmlspecialchars( trim( $category ) ), $term_taxonomy );
+							$import->log .= "<br />>>> " . sprintf( __( 'Category: %s', 'woo_bip' ), $category  );
+						if( !term_exists( $category, $term_taxonomy ) )
+							$term = wp_insert_term( $category  , $term_taxonomy );
 						if( $include_log ) {
 							if( isset( $term ) && $term )
-								$import->log .= "<br />>>>>>> " . sprintf( __( 'Created Category: %s', 'woo_bip' ), trim( $category ) );
+								$import->log .= "<br />>>>>>> " . sprintf( __( 'Created Category: %s', 'woo_bip' ), $category );
 							else
-								$import->log .= "<br />>>>>>> " . sprintf( __( 'Duplicate of Category detected: %s', 'woo_bip' ), trim( $category ) );
+								$import->log .= "<br />>>>>>> " . sprintf( __( 'Duplicate of Category detected: %s', 'woo_bip' ),  $category ) ;
 						}
 				unset( $category, $term );
 		}
@@ -63,44 +62,14 @@ function woo_bip_process_categories() {
 	// Category association
     // Ассоциация с категорей
 	$product->category_term_id = array();
-	$pid_categories = array();
 	if( isset( $product->category ) ) {
-		/*if( strpos( $product->category, $import->category_separator ) ) {
-			$pid_categories_explode = explode( $import->category_separator, $product->category );
-			$size = count( $pid_categories_explode );
-			for( $i = 0; $i < $size; $i++ )
-				$pid_categories[] = $pid_categories_explode[$i];
-			unset( $pid_categories_explode, $size );
-		} else {
-			$pid_categories[] = trim( $product->category );
-		}*/
 		$term_taxonomy = 'product_cat';
-		// Get a list of Product Categories
-		$db_categories_sql = $wpdb->prepare( "SELECT terms.`term_id` FROM `"
-            . $wpdb->terms . "` as terms, `" . $wpdb->term_taxonomy . "` as term_taxonomy WHERE terms.`term_id` = term_taxonomy.`term_id`"
-            . " AND terms.`name` = %s AND term_taxonomy.`taxonomy` = %s", $product->category, $term_taxonomy );
+		$db_categories_sql = $wpdb->prepare( "SELECT terms.term_id FROM "
+            . $wpdb->terms . " as terms, " . $wpdb->term_taxonomy . " as term_taxonomy WHERE terms.term_id = term_taxonomy.term_id"
+            . " AND terms.name = %s AND term_taxonomy.taxonomy = %s", sanitize_text_field( $product->category), $term_taxonomy );
 		$db_category = $wpdb->get_var( $db_categories_sql );
 		$wpdb->flush();
         $product->category_term_id[] = $db_category;
-        $import->log .= "<br />>> " . $db_category . ' - '.$product->category;
-		/*foreach( $pid_categories as $pid_category ) {
-			$pid_categorydata = explode( $import->parent_child_delimiter, $pid_category );
-			$pid_categorydata_size = count( $pid_categorydata );
-			for( $k = 0; $k < $pid_categorydata_size; $k++ ) {
-				switch( $k ) {
-
-					case '0':
-						foreach( $db_categories as $db_category ) {
-							if( ( htmlspecialchars( $pid_categorydata[$k] ) == $db_category->name ) && ( $db_category->category_parent == '0' ) ) {
-								$product->category_term_id[] = $db_category->term_id;
-								break;
-							}
-						}
-						break;
-
-				}
-			}
-		}*/
 	}
 
 }

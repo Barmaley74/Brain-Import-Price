@@ -28,61 +28,74 @@ function beginImport() {
 		'failed_import' : ajaxImport.settings.failed_import
 	}
 
-	$j.post(ajaxImport.ajaxurl, data, function(r){
+    $j.post(ajaxImport.ajaxurl, data, function(r){
 
-		importSettings = r;
-		checkForErrors(); if ( errors ) return;
-		updateLog(importSettings.log);
-		totalProgress = importSettings.rows + 3;
-		incrementProgress();
+        importSettings = r;
+        checkForErrors(); if ( errors ) return;
+        updateLog(importSettings.log);
+        totalProgress = importSettings.rows + 4;
+        incrementProgress();
 
-		var data = {
-			'action': 'brain_import_price',
-			'step': 'generate_categories',
-			'settings': importSettings
-		}
+        var data = {
+            'action': 'brain_import_price',
+            'step': 'generate_categories',
+            'settings': importSettings
+        }
 
-		$j.post(ajaxImport.ajaxurl, data, function(r){
+        $j.post(ajaxImport.ajaxurl, data, function(r){
 
-			importSettings = r;
-			checkForErrors(); if ( errors ) return;
-			updateLog(importSettings.log);
-			incrementProgress();
+		    importSettings = r;
+		    checkForErrors(); if ( errors ) return;
+		    updateLog(importSettings.log);
+		    incrementProgress();
 
-			var data = {
-				'action': 'brain_import_price',
-				'step': 'generate_tags',
-				'settings': importSettings
-			}
+			    var data = {
+				    'action': 'brain_import_price',
+				    'step': 'generate_brands',
+				    'settings': importSettings
+			    }
 
-			$j.post(ajaxImport.ajaxurl, data, function(r){
+			    $j.post(ajaxImport.ajaxurl, data, function(r){
 
-				importSettings = r;
-				checkForErrors(); if ( errors ) return;
-				updateLog(importSettings.log);
-				incrementProgress();
+                    importSettings = r;
+                    checkForErrors(); if ( errors ) return;
+                    updateLog(importSettings.log);
+                    incrementProgress();
 
-				var data = {
-					'action': 'brain_import_price',
-					'step': 'prepare_product_import',
-					'settings': importSettings
-				}
+                    var data = {
+                        'action': 'brain_import_price',
+                        'step': 'generate_tags',
+                        'settings': importSettings
+                    }
 
-				$j.post(ajaxImport.ajaxurl, data, function(r){
+                    $j.post(ajaxImport.ajaxurl, data, function(r){
 
-					importSettings = r;
-					checkForErrors(); if ( errors ) return;
-					updateLog(importSettings.log);
-					incrementProgress();
-					i = r.i;
+                        importSettings = r;
+				    checkForErrors(); if ( errors ) return;
+				    updateLog(importSettings.log);
+				    incrementProgress();
 
-					// Adjust this to speed up/slow down imports
-					productImportInterval = setInterval('importProduct()', 500);
+				    var data = {
+					    'action': 'brain_import_price',
+					    'step': 'prepare_product_import',
+					    'settings': importSettings
+				    }
 
-				});
-			});
-		});
+				    $j.post(ajaxImport.ajaxurl, data, function(r){
 
+					    importSettings = r;
+					    checkForErrors(); if ( errors ) return;
+					    updateLog(importSettings.log);
+					    incrementProgress();
+					    i = r.i;
+
+					    // Adjust this to speed up/slow down imports
+					    productImportInterval = setInterval('importProduct()', 500);
+
+				    });
+			    });
+                });
+        });
 	});
 
 }

@@ -36,9 +36,9 @@ function woo_bip_product_fields() {
 		'alias' => array( 'external_url', 'external_link' )
 	);
     $fields[] = array(
-        'name' => 'vendor',
-        'label' => __( 'Vendor', 'woo_bip' ),
-        'alias' => array( 'vendor' )
+        'name' => 'brands',
+        'label' => __( 'Brands', 'woo_bip' ),
+        'alias' => array( 'brands')
     );
     $fields[] = array(
         'name' => 'supplier_code',
@@ -216,11 +216,11 @@ function woo_bip_parsing( $ID, $url, $name )
         $product->price = round($product->supplier_price * $rate * (100 + $trade_margin) / 100, 2);
         $product->description = (isset($import->csv_description[$count]) ? html_entity_decode($import->csv_description[$count]) : null);
         $product->category = (isset($import->csv_category) && isset($import->csv_category[$count]) ? $import->csv_category[$count] : null);
-        $product->vendor = (isset($import->csv_vendor) && isset($import->csv_vendor[$count]) ? $import->csv_vendor[$count] : null);
+        $product->brands = (isset($import->csv_brands) && isset($import->csv_brands[$count]) ? $import->csv_brands[$count] : null);
         $product->supplier_code = (isset($import->csv_supplier_code) && isset($import->csv_supplier_code[$count]) ? $import->csv_supplier_code[$count] : null);
         $product->product_url = (isset($import->csv_product_url) && isset($import->csv_product_url[$count]) ? $import->csv_product_url[$count] : null);
         $product->warranty = (isset($import->csv_warranty) && isset($import->csv_warranty[$count]) ? $import->csv_warranty[$count] : null);
-        $product->tag = (isset($import->csv_category) && isset($import->csv_category[$count]) ? $import->csv_category[$count] . '|' . $import->csv_vendor[$count] : null);
+        $product->tag = (isset($import->csv_category) && isset($import->csv_category[$count]) ? $import->csv_category[$count] . '|' . $import->csv_brands[$count] : null);
 
         foreach ($product as $key => $value) {
             if (!is_array($value) && $value !== null)
@@ -316,7 +316,6 @@ function woo_bip_parsing( $ID, $url, $name )
         }
         if ($status) {
             $import->fail_requirements = true;
-//            $product->fail_requirements = true;
             $failed_reason = array();
 
                 if ($product->duplicate_exists)
@@ -383,23 +382,20 @@ function woo_bip_parsing( $ID, $url, $name )
         if( !$product->duplicate_exists )
             $product->ID = wp_insert_post($post_data, true);
         else {
-            if ($import->only_price == 0) {
-                $product->ID = $wpdb->get_var("SELECT `post_id` FROM `wp_postmeta` WHERE `meta_key`='_sku' AND `meta_value`='" . $product->sku . "'");
-                $wpdb->flush();
-                wp_update_post($product);
-            }
+            $product->ID = $wpdb->get_var( "SELECT post_id FROM {$wpdb->prefix}postmeta WHERE meta_key = '_sku' AND meta_value = '" . $product->sku . "'");
+            $wpdb->flush();
         }
+
         if (is_wp_error($product->ID) !== true) {
 
-            // Manually refresh the Post GUID
-            // Вручную обновляем ID
-            $wpdb->update($wpdb->posts, array(
-                'guid' => sprintf('%s/?post_type=%s&p=%d', get_bloginfo('url'), $post_type, $product->ID)
-            ), array('ID' => $product->ID));
-            woo_bip_create_product_defaults();
+            if( !$product->duplicate_exists )
+                woo_bip_create_product_defaults();
+
             woo_bip_create_product_details();
+
             if (function_exists('wc_delete_product_transients'))
                 wc_delete_product_transients($product->ID);
+
             $import->products_added++;
             $product->imported = true;
 
@@ -441,8 +437,8 @@ function woo_bip_parsing( $ID, $url, $name )
             '_manage_stock' => 'no',
             '_backorders' => 'no',
             '_stock' => '',
-            'vendor' => '',
             'supplier_code' => '',
+            'updated' => 'no',
             'supplier_price' => 0,
             'warranty' => ''
         );
@@ -467,6 +463,7 @@ function woo_bip_parsing( $ID, $url, $name )
         if ($product->supplier_price !== null) {
             if (WOO_BIP_DEBUG !== true) {
                 update_post_meta($product->ID, 'supplier_price', $product->supplier_price);
+                update_post_meta($product->ID, 'updated', 'yes');
             }
             if ($import->advanced_log)
                 $import->log .= "<br />>>>>>> " . sprintf(__('Setting Supplier Price: %s', 'woo_bip'), $product->supplier_price);
@@ -506,20 +503,6 @@ function woo_bip_parsing( $ID, $url, $name )
                 $import->log .= "<br />>>>>>> " . __('Skipping Price', 'woo_bip');
             }
 
-            // Insert Vendor
-            // Добавляем производителя
-            if ($product->vendor !== null) {
-                if (WOO_BIP_DEBUG !== true) {
-                    update_post_meta($product->ID, 'vendor', $product->vendor);
-                }
-                if ($import->advanced_log)
-                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting Vendor: %s', 'woo_bip'), $product->vendor);
-                else
-                    $import->log .= "<br />>>>>>> " . __('Setting Vendor', 'woo_bip');
-            } else if ($import->advanced_log) {
-                $import->log .= "<br />>>>>>> " . __('Skipping Vendor', 'woo_bip');
-            }
-
             // Insert Supplier Code
             // Добавляем код поставщика
             if ($product->supplier_code !== null) {
@@ -550,23 +533,63 @@ function woo_bip_parsing( $ID, $url, $name )
 
             // Insert Images and Long Description from Product URL
             // Добавляем изображения и длинное описание со ссылки товара с сайта поставщика
-            if ($product->product_url !== null) {
-                if (WOO_BIP_DEBUG !== true) {
-                    $descrpton = woo_bip_parsing($product->ID, $product->product_url, $product->name);
-                    $my_post = array(
-                        'ID' => $product->ID,
-                        'post_content' => $descrpton
-                    );
-                    // Update the post into the database
-                    wp_update_post($my_post);
+            if ($import->parsing_data == 1 || !$product->duplicate_exists ) {
+                if ($product->product_url !== null) {
+                    if (WOO_BIP_DEBUG !== true) {
+                        $descrpton = woo_bip_parsing($product->ID, $product->product_url, $product->name);
+                        $my_post = array(
+                            'ID' => $product->ID,
+                            'post_content' => $descrpton
+                        );
+                        // Update the post into the database
+                        wp_update_post($my_post);
+                    }
+                    if ($import->advanced_log)
+                        $import->log .= "<br />>>>>>> " . sprintf(__('Setting Images and Long Description from: %s', 'woo_bip'), $product->product_url);
+                    else
+                        $import->log .= "<br />>>>>>> " . __('Setting Images and Long Description', 'woo_bip');
+                } else if ($import->advanced_log) {
+                    $import->log .= "<br />>>>>>> " . __('Skipping Images and Long Description', 'woo_bip');
                 }
-                if ($import->advanced_log)
-                    $import->log .= "<br />>>>>>> " . sprintf(__('Setting Images and Long Description from: %s', 'woo_bip'), $product->product_url);
-                else
-                    $import->log .= "<br />>>>>>> " . __('Setting Images and Long Description', 'woo_bip');
-            } else if ($import->advanced_log) {
-                $import->log .= "<br />>>>>>> " . __('Skipping Images and Long Description', 'woo_bip');
             }
+
+            // Update stock status
+            // Обновляем наличие на складе
+            update_post_meta($product->ID, '_stock_status', 'instock');
+
+            // Insert Brands
+            // Добавляем производителя
+            $term_taxonomy = 'brands';
+            if (!empty($product->brands_term_id) && ($import->brands_taxonomies == 1) ) {
+                $term_taxonomy_ids = wp_set_object_terms($product->ID, array_unique(array_map('intval', $product->brands_term_id)), $term_taxonomy);
+            }
+
+            if( ($import->brands_attributes == 1) ) {
+                    $attributes = array();
+                    $attributes['pa_brands'] = array(
+                        'name' => htmlspecialchars(stripslashes('pa_brands')),
+                        'value' => '',
+                        'position' => 0,
+                        'is_visible' => 1,
+                        'is_variation' => 0,
+                        'is_taxonomy' => 1
+                    );
+
+                    wp_set_object_terms($product->ID, $product->brands, 'pa_brands');
+                    update_post_meta($product->ID, '_product_attributes', $attributes);
+                }
+
+                if ($import->advanced_log) {
+                    if (count($product->brands_term_id) == 1)
+                        $import->log .= "<br />>>>>>> " . sprintf(__('Linking Brands: %s', 'woo_bip'), $product->brands);
+                    else
+                        $import->log .= "<br />>>>>>> " . sprintf(__('Linking Brands: %s', 'woo_bip'), $product->brands);
+                } else {
+                    if (count($product->brands_term_id) == 1)
+                        $import->log .= "<br />>>>>>> " . __('Linking Brands', 'woo_bip');
+                    else
+                        $import->log .= "<br />>>>>>> " . __('Linking Brands', 'woo_bip');
+                }
 
             // Insert Category
             // Добавляем категорию

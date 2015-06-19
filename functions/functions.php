@@ -1,5 +1,6 @@
 <?php
 include_once( WOO_BIP_PATH . 'functions/product.php' );
+include_once( WOO_BIP_PATH . 'functions/brands.php' );
 include_once( WOO_BIP_PATH . 'functions/category.php' );
 include_once( WOO_BIP_PATH . 'functions/tag.php' );
 
@@ -100,7 +101,7 @@ if( is_admin() ) {
             // Calculating the price's
             // Выполняем пересчет цен
             case 'price':
-                woo_bip_update_option( 'rate', ( isset( $_POST['rate'] ) ? absint( $_POST['rate'] ) : 0 ) );
+                woo_bip_update_option( 'rate', ( isset( $_POST['rate'] ) ? $_POST['rate'] : 0 ) );
                 woo_bip_update_option( 'trade_margin', ( isset( $_POST['trade_margin'] ) ? absint( $_POST['trade_margin'] ) : 0 ) );
                 woo_bip_update_option( 'enable_discount', ( isset( $_POST['enable_discount'] ) ? absint( $_POST['enable_discount'] ) : 0 ) );
                 woo_bip_update_option( 'count_discount', ( isset( $_POST['count_discount'] ) ? absint( $_POST['count_discount'] ) : 0 ) );
@@ -137,6 +138,9 @@ if( is_admin() ) {
 				$import->cancel_import = false;
                 $import->skip_first = absint( woo_bip_get_option( 'skip_first', 1 ) );
                 $import->only_price = absint( woo_bip_get_option( 'only_price', 1 ) );
+                $import->parsing_data = absint( woo_bip_get_option( 'parsing_data', 1 ) );
+                $import->brands_taxonomies = absint( woo_bip_get_option( 'brands_taxonomies', 1 ) );
+                $import->brands_attributes = absint( woo_bip_get_option( 'brands_attributes', 1 ) );
                 $import->upload_method = ( isset( $_POST['upload_method'] ) ? $_POST['upload_method'] : 'upload' );
 				$import->import_method = sanitize_text_field( woo_bip_get_option( 'import_method', 'new' ) );
 				$import->advanced_log = absint( woo_bip_get_option( 'advanced_log', 1 ) );
@@ -268,10 +272,16 @@ if( is_admin() ) {
 				$import->encoding = woo_bip_get_option( 'encoding', 'UTF-8' );
                 $import->skip_first = ( isset( $_POST['skip_first'] ) ? 1 : 0 );
                 $import->only_price = ( isset( $_POST['only_price'] ) ? 1 : 0 );
+                $import->parsing_data = ( isset( $_POST['parsing_data'] ) ? 1 : 0 );
+                $import->brands_taxonomies = ( isset( $_POST['brands_taxonomies'] ) ? 1 : 0 );
+                $import->brands_attributes = ( isset( $_POST['brands_attributes'] ) ? 1 : 0 );
 				$import->import_method = 'new' ;
 				$import->advanced_log = ( isset( $_POST['advanced_log'] ) ? 1 : 0 );
 				woo_bip_update_option( 'import_method', $import->import_method );
                 woo_bip_update_option( 'only_price', absint( $import->only_price ) );
+                woo_bip_update_option( 'parsing_data', absint( $import->parsing_data ) );
+                woo_bip_update_option( 'brands_taxonomies', absint( $import->brands_taxonomies ) );
+                woo_bip_update_option( 'brands_attributes', absint( $import->brands_attributes ) );
                 woo_bip_update_option( 'skip_first', absint( $import->skip_first ) );
 				woo_bip_update_option( 'advanced_log', absint( $import->advanced_log ) );
 				if( isset( $_POST['timeout'] ) )
@@ -299,6 +309,9 @@ if( is_admin() ) {
 					$settings = array(
 						'skip_first' => $transient->skip_first,
                         'only_price' => $transient->only_price,
+                        'parsing_data' => $transient->parsing_data,
+                        'brands_taxonomies' => $transient->brands_taxonomies,
+                        'brands_attributes' => $transient->brands_attributes,
 						'import_method' => ( isset( $_POST['import_method'] ) ? sanitize_text_field( $_POST['import_method'] ) : 'new' ),
 						'restart_from' => ( isset( $_POST['restart_from'] ) ? absint( (int)$_POST['restart_from'] ) : 0 ),
 						'progress' => ( isset( $_POST['progress'] ) ? absint( $_POST['progress'] ) : 0 ),
@@ -368,13 +381,14 @@ if( is_admin() ) {
 					if( isset( $import->headers ) ) {
 						$args = array(
                             'generate_categories',
+                            'generate_brands',
 							'generate_tags',
 							'prepare_product_import',
 							'save_product'
 						);
 						foreach( $import->headers as $header ) {
-							// Exclude $import->csv_category for most of the import
-							if( in_array( $header, array( 'category') ) ) {
+                            // Exclude $import->csv_category and $import->csv_brands for most of the import
+							if( in_array( $header, array( 'category', 'brands') ) ) {
 								if( in_array( $_POST['step'], $args ) )
 									$import->{'csv_' . $header} = get_transient( WOO_BIP_PREFIX . '_csv_' . $header );
 							} else {
@@ -400,6 +414,9 @@ if( is_admin() ) {
 			switch ( $_POST['step'] ) {
 
 				case 'prepare_data':
+
+                    global $wpdb;
+
 					$import = new stdClass;
 					$import->start_time = time();
 					$import->cancel_import = false;
@@ -412,7 +429,10 @@ if( is_admin() ) {
 					$import->delete_file = woo_bip_get_option( 'delete_file', 0 );
 					$import->import_method = 'new' ;
                     $import->skip_first = ( isset( $_POST['skip_first'] ) ? (int)$_POST['skip_first'] : 0 );
-                    $import->only_price = woo_bip_get_option( 'only_price' );;
+                    $import->only_price = woo_bip_get_option( 'only_price' );
+                    $import->parsing_data = woo_bip_get_option( 'parsing_data' );
+                    $import->brands_taxonomies = woo_bip_get_option( 'brands_taxonomies' );
+                    $import->brands_attributes = woo_bip_get_option( 'brands_attributes' );
                     $import->advanced_log = ( isset( $_POST['advanced_log'] ) ? (int)$_POST['advanced_log'] : 0 );
 					$import->log .= '<br />' . sprintf( __( 'Import method: %s', 'woo_bip' ), $import->import_method );
                         woo_bip_prepare_data( 'prepare_data' );
@@ -422,7 +442,15 @@ if( is_admin() ) {
 					if( !$import->cancel_import )
 						woo_bip_prepare_columns();
 					$import->log .= "<br />" . __( 'Product columns have been grouped', 'woo_bip' );
-					$import->log .= "<br /><br />" . __( 'Generating Categories...', 'woo_bip' );
+
+                    // Update stock status
+                    // Обновляем наличие на складе
+                    $import->log .= "<br /><br />" . __( 'Update stock status...', 'woo_bip' );
+                    $db_update_sql = $wpdb->prepare( "UPDATE " . $wpdb->postmeta . " SET meta_value=%s WHERE meta_key='updated'", 'no');
+                    $wpdb->query( $db_update_sql);
+                    $wpdb->flush();
+
+                    $import->log .= "<br /><br />" . __( 'Generating Categories...', 'woo_bip' );
 					$import->loading_text = __( 'Generating Categories...', 'woo_bip' );
 					break;
 
@@ -436,11 +464,22 @@ if( is_admin() ) {
 						woo_bip_generate_categories();
 					else
 						$import->log .= "<br />" . __( 'Categories skipped', 'woo_bip' );
-					$import->log .= "<br /><br />" . __( 'Generating Tags...', 'woo_bip' );
-					$import->loading_text = __( 'Generating Tags...', 'woo_bip' );
+					$import->log .= "<br /><br />" . __( 'Generating Brands...', 'woo_bip' );
+					$import->loading_text = __( 'Generating Brands...', 'woo_bip' );
 					break;
 
-				case 'generate_tags':
+                case 'generate_brands':
+                    // Brands generation
+                    // Генерирование производителей
+                    if( in_array( $import->import_method, array( 'new' ) ) && isset( $import->csv_brands ) )
+                        woo_bip_generate_brands();
+                    else
+                        $import->log .= "<br />" . __( 'Brands skipped', 'woo_bip' );
+                    $import->log .= "<br /><br />" . __( 'Generating Tags...', 'woo_bip' );
+                    $import->loading_text = __( 'Generating Tags...', 'woo_bip' );
+                    break;
+
+                case 'generate_tags':
 					// Tag generation
                     // Генерирование меток
 					if( in_array( $import->import_method, array( 'new' ) ) && isset( $import->csv_tag ) )
@@ -485,7 +524,7 @@ if( is_admin() ) {
 
 				case 'save_product':
 
-					global $import, $product;
+					global $import, $product, $wpdb;
 
 					$i = $_POST['i'];
 
@@ -497,7 +536,10 @@ if( is_admin() ) {
 					}
 
 					$import->product_start_time = microtime( true );
-					if( in_array( $import->import_method, array( 'new' ) ) ) {
+
+                        // Build Brands
+                        // Строим производителей
+                        woo_bip_process_brands();
 						// Build Categories
                         // Строим категории
 						woo_bip_process_categories();
@@ -505,12 +547,12 @@ if( is_admin() ) {
 						// Build Tags
                         // Строим метки
 						woo_bip_process_tags();
-					}
 
-					// Check for duplicate SKU
+                    // Check for duplicate SKU
                     // Проверяем дублирование партномеров
-					woo_bip_duplicate_product_exists();
+                    woo_bip_duplicate_product_exists();
 					woo_bip_validate_product();
+
 					if( $product->fail_requirements ) {
 
 						if( $import->advanced_log )
@@ -521,9 +563,7 @@ if( is_admin() ) {
 
 					} else {
 
-						if( in_array( $import->import_method, array( 'new' ) )  )
-							woo_bip_create_product();
-
+                        woo_bip_create_product();
 
 							if( $product->imported ) {
 								if( $import->import_method == 'new' ) {
@@ -557,7 +597,18 @@ if( is_admin() ) {
 					if( $i+1 == $import->rows ) {
 						if( $import->import_method == 'new' )
 							$import->log .= "<br />" . __( 'Products have been generated', 'woo_bip' );
-						$import->log .= "<br /><br />" . __( 'Cleaning up...', 'woo_bip' );
+
+                        // Update stock status
+                        // Обновляем наличие на складе
+                        $import->log .= "<br /><br />" . __( 'Update stock status...', 'woo_bip' );
+                        $outofstock = $wpdb->get_col("SELECT t1.post_id FROM " . $wpdb->postmeta . " AS t1," . $wpdb->postmeta . " AS t2"
+                        ." WHERE t1.meta_key='updated' AND t1.meta_value='no' AND t1.post_id=t2.post_id AND t2.meta_key='_stock_status' AND t2.meta_value='instock'");
+                        $wpdb->flush();
+                        for ($z=0; $z<count($outofstock); $z++) {
+                                update_post_meta($outofstock[$z], '_stock_status', 'outofstock');
+                        }
+
+                        $import->log .= "<br /><br />" . __( 'Cleaning up...', 'woo_bip' );
 						$import->loading_text = __( 'Cleaning up...', 'woo_bip' );
 					} else {
 						unset( $import->active_product );
@@ -591,7 +642,14 @@ if( is_admin() ) {
 
 					global $wpdb, $product;
 
-					// Organise Categories
+                    // Organise Brands
+                    // Организуем производителей
+                    if( isset( $import->csv_brands ) ) {
+                        $term_taxonomy = 'brands';
+                        $import->log .= "<br />>>> " . __( 'Organise Brands', 'woo_bip' );
+                    }
+
+                    // Organise Categories
                     // Организуем категории
 					if( isset( $import->csv_category ) ) {
 						$term_taxonomy = 'product_cat';
@@ -609,13 +667,10 @@ if( is_admin() ) {
 
                     // Recalculating sale prices
                     // Пересчитываем цены со скидкой
-                    $enable_discount = woo_bip_get_option( 'enable_discount' );
-                    if ($enable_discount == '1') {
                         $rate = woo_bip_get_option('rate');
                         $count_discount = woo_bip_get_option('count_discount');
                         $discount_margin = woo_bip_get_option('discount_margin');
                         woo_bip_update_sale_prices($rate, $discount_margin, $count_discount);
-                    }
 
                     // Post-import Product details
                     // Подробности после импорта
@@ -975,6 +1030,7 @@ function woo_bip_format_cell_preview( $output = '', $key = '', $cell = '' ) {
 	$matches = array(
 		'image',
 		'product_gallery',
+        'brands',
 		'category',
 		'tag'
 	);
@@ -1059,10 +1115,10 @@ function woo_bip_prepare_columns( $value_data = array() ) {
 		$import->csv_supplier_price = array_filter( $csv_data['supplier_price'] );
 		$import->log .= "<br />>>> " . __( 'Price has been detected and grouped', 'woo_bip' );
 	}
-    if( isset( $csv_data['vendor'] ) ) {
-        $import->headers[] = 'vendor';
-        $import->csv_vendor = array_filter( $csv_data['vendor'] );
-        $import->log .= "<br />>>> " . __( 'Vendor has been detected and grouped', 'woo_bip' );
+    if( isset( $csv_data['brands'] ) ) {
+        $import->headers[] = 'brands';
+        $import->csv_brands = array_filter( $csv_data['brands'] );
+        $import->log .= "<br />>>> " . __( 'Brands has been detected and grouped', 'woo_bip' );
     }
     if( isset( $csv_data['supplier_code'] ) ) {
         $import->headers[] = 'supplier_code';
@@ -1337,14 +1393,14 @@ function woo_bip_update_prices( $rate, $margin ) {
 
     global $wpdb;
 
-    $db_update_sql = $wpdb->prepare( "UPDATE " . $wpdb->postmeta . " AS meta1 INNER JOIN " . $wpdb->postmeta . " AS meta2 ON meta1.`post_id`=meta2.`post_id`"
-    . " AND meta1.`meta_key`='_price' AND meta2.`meta_key`='supplier_price'"
-        . " SET meta1.`meta_value`=meta2.`meta_value`* %d * (100 + %d) / 100", $rate, $margin);
+    $db_update_sql = $wpdb->prepare( "UPDATE " . $wpdb->postmeta . " AS meta1 INNER JOIN " . $wpdb->postmeta . " AS meta2 ON meta1.post_id=meta2.post_id"
+    . " AND meta1.meta_key='_price' AND meta2.meta_key='supplier_price'"
+        . " SET meta1.meta_value=meta2.meta_value* %d * (100 + %d) / 100", $rate, $margin);
     $wpdb->get_results( $db_update_sql );
     $wpdb->flush();
-    $db_update_sql = $wpdb->prepare( "UPDATE " . $wpdb->postmeta . " AS meta1 INNER JOIN " . $wpdb->postmeta . " AS meta2 ON meta1.`post_id`=meta2.`post_id`"
-        . " AND meta1.`meta_key`='_regular_price' AND meta2.`meta_key`='supplier_price'"
-        . " SET meta1.`meta_value`=meta2.`meta_value`* %d * (100 + %d) / 100", $rate, $margin);
+    $db_update_sql = $wpdb->prepare( "UPDATE " . $wpdb->postmeta . " AS meta1 INNER JOIN " . $wpdb->postmeta . " AS meta2 ON meta1.post_id=meta2.post_id"
+        . " AND meta1.meta_key='_regular_price' AND meta2.meta_key='supplier_price'"
+        . " SET meta1.meta_value=meta2.meta_value* %d * (100 + %d) / 100", $rate, $margin);
     $wpdb->get_results( $db_update_sql );
     $wpdb->flush();
 
@@ -1356,19 +1412,32 @@ function woo_bip_update_sale_prices( $rate, $margin, $count_discount ) {
 
     global $wpdb;
 
-    $wpdb->delete( $wpdb->postmeta, array( 'meta_key' => '_sale_price' ) );
-    $products = $wpdb->get_col("SELECT `post_id` FROM `wp_postmeta` WHERE `meta_key`='supplier_price'");
+    $prices = $wpdb->get_results("SELECT t1.post_id, t1.meta_value FROM {$wpdb->prefix}postmeta AS t1, {$wpdb->prefix}postmeta AS t2"
+    ." WHERE t1.meta_key='_regular_price' AND t2.meta_key='_price' AND t1.post_id=t2.post_id AND t1.meta_value<>t2.meta_value");
     $wpdb->flush();
-
-    for ($z = 1; $z <= $count_discount; $z++) {
-
-        $id = array_rand($products);
-        $product_id = $products[$id];
-        $supplier_price = get_post_meta($product_id, 'supplier_price', true);
-        $sale_price = $supplier_price * $rate * (100 + $margin)/100;
-        add_post_meta($product_id, '_sale_price', $sale_price);
-
+    foreach ($prices as $price){
+        update_post_meta($price['post_id'], '_price', $price['meta_value']);
     }
+
+    $wpdb->delete( $wpdb->postmeta, array( 'meta_key' => '_sale_price' ) );
+
+    $enable_discount = woo_bip_get_option( 'enable_discount' );
+    if ($enable_discount == '1') {
+        $products = $wpdb->get_col("SELECT post_id FROM {$wpdb->prefix}postmeta WHERE meta_key='supplier_price'");
+        $wpdb->flush();
+        $cnt_products = count($products);
+        for ($z = 1; $z <= $count_discount; $z++) {
+
+            $id = rand(0,$cnt_products-1);
+            $product_id = $products[$id];
+            $supplier_price = get_post_meta($product_id, 'supplier_price', true);
+            $sale_price = $supplier_price * $rate * (100 + $margin) / 100;
+            add_post_meta($product_id, '_sale_price', $sale_price);
+            update_post_meta($product_id, '_price', $sale_price);
+
+        }
+    }
+    delete_transient( 'wc_products_onsale' );
 }
 
 // Generating tags array
@@ -1384,7 +1453,7 @@ function woo_bip_tag_array() {
     else
         $i = 0;
     for( ; $i < $size; $i++ )
-        $tags[$i] = $import->csv_category[$i] . '|' . $import->csv_vendor[$i];
+        $tags[$i] = $import->csv_category[$i] . '|' . $import->csv_brands[$i];
 
         return $tags;
 }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce - Brain Import Price v1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-30 10:44+0200\n"
-"PO-Revision-Date: 2015-05-30 10:45+0200\n"
+"POT-Creation-Date: 2015-06-17 10:30+0200\n"
+"PO-Revision-Date: 2015-06-17 10:31+0200\n"
 "Last-Translator: admin <neo_poltava@yahoo.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 # @ woo_bip
-#: brain-import-price.php:45
+#: brain-import-price.php:46
 msgid "Products"
 msgstr "Товары"
 
 # @ woo_bip
-#: brain-import-price.php:45
+#: brain-import-price.php:46
 msgid ""
 "<strong>Brain Import Price</strong> - Import Products into WooCommerce from "
 "a price CSV file."
@@ -33,12 +33,12 @@ msgstr ""
 "<strong>Brain Import Price</strong> - Импорт товаров из прайса в формате CSV."
 
 # @ woo_bip
-#: brain-import-price.php:141 functions/admin.php:89
+#: brain-import-price.php:142 functions/admin.php:89
 msgid "Brain Import Price"
 msgstr "Импорт прайса Брейн"
 
 # @ woo_bip
-#: brain-import-price.php:188
+#: brain-import-price.php:189
 #, php-format
 msgid ""
 "It seems the character encoding provided under General Settings on the "
@@ -50,7 +50,7 @@ msgstr ""
 "автоматически обнаружили кодировку для вас <code>% s </code> ,"
 
 # @ woo_bip
-#: brain-import-price.php:208
+#: brain-import-price.php:209
 #, php-format
 msgid ""
 "It seems the field delimiter provided under Import Options - <code>%s</code> "
@@ -62,7 +62,7 @@ msgstr ""
 "разделитель <code>%s</code>."
 
 # @ woo_bip
-#: brain-import-price.php:212
+#: brain-import-price.php:213
 msgid ""
 "It seems either this CSV has only a single column or we were unable to "
 "automatically detect the CSV delimiter."
@@ -71,13 +71,60 @@ msgstr ""
 "определить разделитель CSV."
 
 # @ woo_bip
-#: brain-import-price.php:212 functions/functions.php:24
-#: functions/functions.php:45 functions/functions.php:54
-#: functions/functions.php:63 functions/functions.php:72
-#: functions/functions.php:245 functions/functions.php:284
-#: functions/functions.php:389
+#: brain-import-price.php:213 functions/functions.php:25
+#: functions/functions.php:46 functions/functions.php:55
+#: functions/functions.php:64 functions/functions.php:73
+#: functions/functions.php:249 functions/functions.php:294
+#: functions/functions.php:403
 msgid "Need help?"
 msgstr "Необходима помощь?"
+
+#: classes/sds_wcm_brands.php:10 classes/wcm_brands.php:10
+msgctxt "taxonomy general name"
+msgid "Brands"
+msgstr "Производители"
+
+#: classes/sds_wcm_brands.php:11 classes/wcm_brands.php:11
+msgctxt "taxonomy singular name"
+msgid "Brand"
+msgstr "Производитель"
+
+#: classes/sds_wcm_brands.php:12 classes/wcm_brands.php:12
+msgid "Search Brands"
+msgstr "Поиск по производителям"
+
+#: classes/sds_wcm_brands.php:13 classes/wcm_brands.php:13
+msgid "All Brands"
+msgstr "Все бренды"
+
+#: classes/sds_wcm_brands.php:14 classes/wcm_brands.php:14
+msgid "Parent Brand"
+msgstr "Основной брэнд"
+
+#: classes/sds_wcm_brands.php:15 classes/wcm_brands.php:15
+msgid "Parent Brand:"
+msgstr "Основной брэнд"
+
+#: classes/sds_wcm_brands.php:16 classes/wcm_brands.php:16
+msgid "Edit Brand"
+msgstr "Редактировать инфо о производителе"
+
+#: classes/sds_wcm_brands.php:17 classes/wcm_brands.php:17
+msgid "Update Brand"
+msgstr "Обновить информацию о производителе"
+
+#: classes/sds_wcm_brands.php:18 classes/wcm_brands.php:18
+msgid "Add New Brand"
+msgstr "Добавить нового производителя"
+
+#: classes/sds_wcm_brands.php:19 classes/wcm_brands.php:19
+msgid "New Brand Name"
+msgstr "Новое название производителя"
+
+#: classes/sds_wcm_brands.php:20 classes/wcm_brands.php:20
+#: classes/wcm_brands.php:46 functions/product.php:40
+msgid "Brands"
+msgstr "Производители"
 
 # @ woo_bip
 #: functions/admin.php:206
@@ -157,8 +204,40 @@ msgstr "Добавлено %s для Прошлого импорта"
 msgid "%s already appears in Past Imports"
 msgstr "%s уже появляется в Прошлом импорте"
 
+#: functions/brands.php:17 functions/brands.php:57
+msgid "No Brands were provided"
+msgstr "Не было указано производителей"
+
+#: functions/brands.php:34
+#, php-format
+msgid ""
+"We have just processed and generated so many Product Brands that we couldn't "
+"actually show you it in real-time, ~%d to be precise"
+msgstr ""
+"Мы обработали и сгенерировали так много Производителей товаров, что не можем "
+"показать вам их в режиме реального времени, ~% d"
+
+#: functions/brands.php:40
+#, php-format
+msgid "Brands: %s"
+msgstr "Производители: %s"
+
+#: functions/brands.php:48
+#, php-format
+msgid "Created Brands: %s"
+msgstr "Создан Производитель: %s"
+
+#: functions/brands.php:50
+#, php-format
+msgid "Duplicate of Brands detected: %s"
+msgstr "Обнаружен дублированный производитель: %s"
+
+#: functions/brands.php:55
+msgid "Brands have been generated"
+msgstr "Производитель был сгенерирован"
+
 # @ woo_bip
-#: functions/category.php:17 functions/category.php:54
+#: functions/category.php:17 functions/category.php:53
 msgid "No Categories were provided"
 msgstr "Категории не были предоставлены"
 
@@ -174,30 +253,30 @@ msgstr ""
 "точным"
 
 # @ woo_bip
-#: functions/category.php:40
+#: functions/category.php:39
 #, php-format
 msgid "Category: %s"
 msgstr "Категория: %s"
 
 # @ woo_bip
-#: functions/category.php:45
+#: functions/category.php:44
 #, php-format
 msgid "Created Category: %s"
 msgstr "Создана категория: %s"
 
 # @ woo_bip
-#: functions/category.php:47
+#: functions/category.php:46
 #, php-format
 msgid "Duplicate of Category detected: %s"
 msgstr "Обнаружена дублированная категория: %s"
 
 # @ woo_bip
-#: functions/category.php:52
+#: functions/category.php:51
 msgid "Categories have been generated"
 msgstr "Категории были сгенерированы"
 
 # @ woo_bip
-#: functions/functions.php:24
+#: functions/functions.php:25
 #, php-format
 msgid ""
 "Your WordPress site does not allow changes to allocated memory limits, "
@@ -207,14 +286,14 @@ msgstr ""
 "из-за этого, возникают ошибки, скорее всего, связанных с памятью. %s"
 
 # @ woo_bip
-#: functions/functions.php:26 functions/functions.php:47
-#: functions/functions.php:56 functions/functions.php:65
-#: functions/functions.php:74
+#: functions/functions.php:27 functions/functions.php:48
+#: functions/functions.php:57 functions/functions.php:66
+#: functions/functions.php:75
 msgid "Dismiss"
 msgstr "Отсутствует"
 
 # @ woo_bip
-#: functions/functions.php:37
+#: functions/functions.php:38
 #, php-format
 msgid ""
 "We recommend setting memory to at least %dMB prior to importing, your site "
@@ -228,7 +307,7 @@ msgstr ""
 "информации <span style=\"float:right;\"><a href=\"%s\"> Отменить </a></span>"
 
 # @ woo_bip
-#: functions/functions.php:45
+#: functions/functions.php:46
 #, php-format
 msgid ""
 "Your WordPress site appears to be running PHP in 'Safe Mode', because of "
@@ -240,7 +319,7 @@ msgstr ""
 "каталогов. %s"
 
 # @ woo_bip
-#: functions/functions.php:54
+#: functions/functions.php:55
 #, php-format
 msgid ""
 "The function mb_convert_encoding() requires the mb_strings extension to be "
@@ -250,7 +329,7 @@ msgstr ""
 "включено, многоязычная поддержка импорта была отключена. %s"
 
 # @ woo_bip
-#: functions/functions.php:63
+#: functions/functions.php:64
 msgid ""
 "The function mb_list_encodings() requires the mb_strings extension to be "
 "enabled, if you are importing non-English and/or special characters the "
@@ -263,7 +342,7 @@ msgstr ""
 "вызовет ошибку импорта."
 
 # @ woo_bip
-#: functions/functions.php:72
+#: functions/functions.php:73
 #, php-format
 msgid ""
 "Your WordPress site is running an older version of PHP which does not "
@@ -273,16 +352,16 @@ msgstr ""
 "функцию str_getcsv (), будет использоваться замена. %s"
 
 # @ woo_bip
-#: functions/functions.php:96
+#: functions/functions.php:97
 msgid "Settings saved."
 msgstr "Настройки сохранены"
 
-#: functions/functions.php:112
+#: functions/functions.php:113
 msgid "Prices are recalculated."
 msgstr "Цены пересчитаны."
 
 # @ woo_bip
-#: functions/functions.php:178
+#: functions/functions.php:182
 #, php-format
 msgid ""
 "Your CSV file is empty, re-upload a populated CSV file from the opening "
@@ -292,7 +371,7 @@ msgstr ""
 "\"_blank\"> Нужна помощь? </a>"
 
 # @ woo_bip
-#: functions/functions.php:184
+#: functions/functions.php:188
 #, php-format
 msgid ""
 "Your CSV file upload has expired, re-upload it from the opening import "
@@ -302,7 +381,7 @@ msgstr ""
 "импорта. <a href=\"%s\" target=\"_blank\"> Нужна помощь? </a>"
 
 # @ woo_bip
-#: functions/functions.php:191
+#: functions/functions.php:195
 #, php-format
 msgid ""
 "No CSV file was uploaded, check that a file is uploaded from the opening "
@@ -312,7 +391,7 @@ msgstr ""
 "импорта. <a href=\"%s\" target=\"_blank\"> Нужна помощь? </a>"
 
 # @ woo_bip
-#: functions/functions.php:197
+#: functions/functions.php:201
 #, php-format
 msgid ""
 "Brain Import Price requires a CSV-formatted upload, if you are sure the file "
@@ -324,7 +403,7 @@ msgstr ""
 "<a href=\"%s\" target=\"_blank\"> Нужна помощь? </a>"
 
 # @ woo_bip
-#: functions/functions.php:203
+#: functions/functions.php:207
 #, php-format
 msgid ""
 "No CSV file was uploaded. Please select a CSV to upload from the 'Choose "
@@ -336,7 +415,7 @@ msgstr ""
 "href=\"%s\" target=\"_blank\"> Нужна помощь? </a>"
 
 # @ woo_bip
-#: functions/functions.php:211
+#: functions/functions.php:215
 #, php-format
 msgid ""
 "The file you're importing exceeded the maximum allowed filesize (see Maximum "
@@ -348,16 +427,16 @@ msgstr ""
 "файл CSV меньшего размера. <a href=\"%s\" target=\"_blank\"> Нужна помощь? </"
 "a>"
 
-#: functions/functions.php:218
+#: functions/functions.php:222
 msgid "You cannot leave the Rate under Import Options empty."
 msgstr "Вы не можете оставить поле \"Курс\" пустым"
 
-#: functions/functions.php:225
+#: functions/functions.php:229
 msgid "You cannot leave the Margin under Import Options empty."
 msgstr "Вы не можете оставить поле \"Наценка\" пустым"
 
 # @ woo_bip
-#: functions/functions.php:232
+#: functions/functions.php:236
 #, php-format
 msgid ""
 "You cannot leave the Field delimiter or Product Category separator options "
@@ -367,13 +446,13 @@ msgstr ""
 "\" target=\"_blank\">Нужна помощь?</a>"
 
 # @ woo_bip
-#: functions/functions.php:245
+#: functions/functions.php:249
 #, php-format
 msgid "There was an error while uploading your CSV file, <em>%s</em>. %s"
 msgstr "Произошла ошибка во время загрузки CSV файла, <em>%s</em>. %s"
 
 # @ woo_bip
-#: functions/functions.php:284
+#: functions/functions.php:294
 #, php-format
 msgid ""
 "Your CSV file upload has expired, re-upload it from the opening import "
@@ -383,17 +462,17 @@ msgstr ""
 "импорта. %s"
 
 # @ woo_bip
-#: functions/functions.php:296 functions/functions.php:306
+#: functions/functions.php:306 functions/functions.php:319
 msgid "Resuming import..."
 msgstr "Возобновляем импорт..."
 
 # @ woo_bip
-#: functions/functions.php:298 functions/functions.php:454
+#: functions/functions.php:308 functions/functions.php:493
 msgid "Generating Products..."
 msgstr "Генерируем товары..."
 
 # @ woo_bip
-#: functions/functions.php:389
+#: functions/functions.php:403
 #, php-format
 msgid ""
 "Your CSV contained special characters that WordPress and Brain Import Price "
@@ -403,223 +482,239 @@ msgstr ""
 "Брейн не может фильтровать. %s"
 
 # @ woo_bip
-#: functions/functions.php:417
+#: functions/functions.php:437
 #, php-format
 msgid "Import method: %s"
 msgstr "Метод импорта: %s"
 
 # @ woo_bip
-#: functions/functions.php:421
+#: functions/functions.php:441
 msgid "Validating required columns..."
 msgstr "Проверяем требуемые колонки..."
 
 # @ woo_bip
-#: functions/functions.php:424
+#: functions/functions.php:444
 msgid "Product columns have been grouped"
 msgstr "Колонки товара были сгруппированы"
 
+#: functions/functions.php:448
+msgid "Update stock status..."
+msgstr "Обновляем наличие на складе..."
+
 # @ woo_bip
-#: functions/functions.php:425 functions/functions.php:426
+#: functions/functions.php:453 functions/functions.php:454
 msgid "Generating Categories..."
 msgstr "Генерируем категории..."
 
 # @ woo_bip
-#: functions/functions.php:438
+#: functions/functions.php:466
 msgid "Categories skipped"
 msgstr "Категории пропущены"
 
+#: functions/functions.php:467 functions/functions.php:468
+msgid "Generating Brands..."
+msgstr "Генерируем производителей..."
+
+#: functions/functions.php:477
+msgid "Brands skipped"
+msgstr "Производители пропущены"
+
 # @ woo_bip
-#: functions/functions.php:439 functions/functions.php:440
+#: functions/functions.php:478 functions/functions.php:479
 msgid "Generating Tags..."
 msgstr "Генерируем метки..."
 
 # @ woo_bip
-#: functions/functions.php:451
+#: functions/functions.php:490
 msgid "Tags skipped"
 msgstr "Метки пропущены"
 
 # @ woo_bip
-#: functions/functions.php:455
+#: functions/functions.php:494
 msgid "Importing Products..."
 msgstr "Импортируем товары..."
 
 # @ woo_bip
-#: functions/functions.php:463
+#: functions/functions.php:502
 msgid "Including non-essential reporting in this import log"
 msgstr "В том числе несущественные отчетности в этом журнале импорта"
 
 # @ woo_bip
-#: functions/functions.php:466
+#: functions/functions.php:505
 msgid "Skipping import of first CSV row"
 msgstr "Пропускаем импорт первой строки CSV"
 
 # @ woo_bip
-#: functions/functions.php:469
+#: functions/functions.php:508
 msgid "Starting import at first CSV row"
 msgstr "Начинаем импорт первой строки CSV"
 
 # @ woo_bip
-#: functions/functions.php:480 functions/functions.php:578
+#: functions/functions.php:519 functions/functions.php:618
 #, php-format
 msgid "Importing %s..."
 msgstr "Импортируем %s..."
 
 # @ woo_bip
-#: functions/functions.php:482 functions/functions.php:580
+#: functions/functions.php:521 functions/functions.php:620
 #, php-format
 msgid "Importing (no title) - SKU: %s..."
 msgstr "Импортируется - Парт/Номер: %s..."
 
 # @ woo_bip
-#: functions/functions.php:483 functions/functions.php:581
+#: functions/functions.php:522 functions/functions.php:621
 #, php-format
 msgid "Importing Product %d of %d..."
 msgstr "Импортируется товар %d из %d..."
 
 # @ woo_bip
-#: functions/functions.php:517 functions/functions.php:537
+#: functions/functions.php:559 functions/functions.php:577
 #, php-format
 msgid "Skipping Product, see Import Report for full explanation. Reason: %s"
 msgstr "Пропускаем товар, смотрите отчет импорта для обьяснения.Основание: %s"
 
 # @ woo_bip
-#: functions/functions.php:519 functions/functions.php:539
+#: functions/functions.php:561 functions/functions.php:579
 #, php-format
 msgid "Skipping Product, reason: %s"
 msgstr "Пропускаем товар, основание: %s"
 
 # @ woo_bip
-#: functions/functions.php:531
+#: functions/functions.php:571
 #, php-format
 msgid "%s successfully imported"
 msgstr "%s успешно импортировано"
 
 # @ woo_bip
-#: functions/functions.php:533
+#: functions/functions.php:573
 #, php-format
 msgid "(no title) - SKU: %s successfully imported"
 msgstr "Парт/Номер: %s... успешно импортирован"
 
 # @ woo_bip
-#: functions/functions.php:559
+#: functions/functions.php:599
 msgid "Products have been generated"
 msgstr "Товары были сгенерированы"
 
 # @ woo_bip
-#: functions/functions.php:560 functions/functions.php:561
+#: functions/functions.php:600 functions/functions.php:601
 msgid "Cleaning up..."
 msgstr "Очищаем..."
 
 # @ woo_bip
-#: functions/functions.php:572
+#: functions/functions.php:612
 #, php-format
 msgid "Searching for %s..."
 msgstr "Производим поиск для %s..."
 
 # @ woo_bip
-#: functions/functions.php:574
+#: functions/functions.php:614
 #, php-format
 msgid "Searching for (no title) - SKU: %s..."
 msgstr "Поиск - Парт/Номер: %s..."
 
 # @ woo_bip
-#: functions/functions.php:575
+#: functions/functions.php:615
 #, php-format
 msgid "Searching for Product %d of %d..."
 msgstr "Ищем товар %d из %d..."
 
-#: functions/functions.php:587
+#: functions/functions.php:627
 msgid "Updating price"
 msgstr "Обновляем цену"
 
+#: functions/functions.php:638
+msgid "Organise Brands"
+msgstr "Упорядочиваем производителей"
+
 # @ woo_bip
-#: functions/functions.php:598
+#: functions/functions.php:645
 msgid "Organise Categories"
 msgstr "Упорядочиваем категории"
 
 # @ woo_bip
-#: functions/functions.php:604
+#: functions/functions.php:651
 msgid "Organise Tags"
 msgstr "Упорядочиваем метки"
 
 # @ woo_bip
-#: functions/functions.php:607
+#: functions/functions.php:654
 msgid "Clean up has completed"
 msgstr "Очистка была завершена"
 
 # @ woo_bip
-#: functions/functions.php:623
+#: functions/functions.php:667
 msgid "Import summary"
 msgstr "Итоги импорта"
 
 # @ woo_bip
-#: functions/functions.php:625
+#: functions/functions.php:669
 #, php-format
 msgid "%d Products added"
 msgstr "%d товар добавлен"
 
 # @ woo_bip
-#: functions/functions.php:626
+#: functions/functions.php:670
 #, php-format
 msgid "%d Products skipped"
 msgstr "%d товар пропущен"
 
 # @ woo_bip
-#: functions/functions.php:627
+#: functions/functions.php:671
 #, php-format
 msgid "Import took %s to complete"
 msgstr "Импорт завершен - %s"
 
 # @ woo_bip
-#: functions/functions.php:628
+#: functions/functions.php:672
 #, php-format
 msgid "Fastest Product took < %s to process"
 msgstr "Самый быстрый товар < %s"
 
 # @ woo_bip
-#: functions/functions.php:629
+#: functions/functions.php:673
 #, php-format
 msgid "Slowest Product took > %s to process"
 msgstr "Самый медленный товар < %s"
 
 # @ woo_bip
-#: functions/functions.php:632
+#: functions/functions.php:676
 msgid "Import complete!"
 msgstr "Импорт завершен!"
 
 # @ woo_bip
-#: functions/functions.php:633
+#: functions/functions.php:677
 msgid "Completed"
 msgstr "Завершено"
 
 # @ woo_bip
-#: functions/functions.php:659
+#: functions/functions.php:703
 #, php-format
 msgid ""
 "[product-importer] Could not save the import data Transient for the column %s"
 msgstr "Не могу сохранить временные данные импорта для колонки %s"
 
 # @ woo_bip
-#: functions/functions.php:755
+#: functions/functions.php:799
 msgid ""
 "Good news! All of your Products have been successfully imported into "
 "WooCommerce."
 msgstr "Все ваши товары были успешно импортированы в базу данных"
 
 # @ woo_bip
-#: functions/functions.php:759
+#: functions/functions.php:803
 msgid ""
 "Here's the news. Some of your Products have been successfully imported into "
 "WooCommerce."
 msgstr "Некоторые из ваших товаров были успешно импортированы в базу данных"
 
 # @ woo_bip
-#: functions/functions.php:762
+#: functions/functions.php:806
 msgid "Here's the news. No new Products were imported into WooCommerce."
 msgstr "Нет новых товаров для импорта в базу данных"
 
 # @ woo_bip
-#: functions/functions.php:802
+#: functions/functions.php:846
 #, php-format
 msgid ""
 "%s rows have been detected within this import file, and by the looks of it "
@@ -629,43 +724,43 @@ msgstr ""
 "заголовки колонок. Итак, начнем!"
 
 # @ woo_bip
-#: functions/functions.php:804
+#: functions/functions.php:848
 #, php-format
 msgid "%s rows have been detected within this import file. Let's get started!"
 msgstr "%s строк были обнаружены в файле для импорта. Начнем!"
 
 # @ woo_bip
-#: functions/functions.php:884
+#: functions/functions.php:928
 #, php-format
 msgid "Sufficient memory is available... %s"
 msgstr "Доступно памяти... %s"
 
 # @ woo_bip
-#: functions/functions.php:887
+#: functions/functions.php:931
 msgid "Could not read file. Could not open the import file or URL."
 msgstr "Не могу прочитать файл. Не могу открыть файл импорта или URL"
 
 # @ woo_bip
-#: functions/functions.php:891
+#: functions/functions.php:935
 msgid "Could not read file. An empty import file was detected."
 msgstr "Не могу прочитать файл. J,yfhe;ty gecnjq afqk bvgjhnf"
 
 # @ woo_bip
-#: functions/functions.php:897
+#: functions/functions.php:941
 msgid ""
 "Could not read file. Brain Import Price doesn't have a record of this import "
 "file."
 msgstr "Не могу прочитать файл"
 
 # @ woo_bip
-#: functions/functions.php:940
+#: functions/functions.php:984
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "Загруженный файл превышает директиву UPLOAD_MAX_FILESIZE, которая была "
 "задана в файле php.ini"
 
 # @ woo_bip
-#: functions/functions.php:941
+#: functions/functions.php:985
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
@@ -674,57 +769,57 @@ msgstr ""
 "форме HTML"
 
 # @ woo_bip
-#: functions/functions.php:942
+#: functions/functions.php:986
 msgid "The uploaded file was only partially uploaded"
 msgstr "Загружаемый файл был только частично прочитан"
 
 # @ woo_bip
-#: functions/functions.php:943
+#: functions/functions.php:987
 msgid "No file was uploaded"
 msgstr "Файл не был загружен"
 
 # @ woo_bip
-#: functions/functions.php:944
+#: functions/functions.php:988
 msgid "Missing a temporary folder"
 msgstr "Отсутствует временный Каталог"
 
 # @ woo_bip
-#: functions/functions.php:945
+#: functions/functions.php:989
 msgid "Failed to write file to disk"
 msgstr "Не могу записать файл на диск"
 
 # @ woo_bip
-#: functions/functions.php:946
+#: functions/functions.php:990
 msgid "A PHP extension stopped the file upload"
 msgstr "Раширение PHP остановило загрузку файла"
 
 # @ woo_bip
-#: functions/functions.php:949
+#: functions/functions.php:993
 msgid "Unknown upload error"
 msgstr "Неизвестная ошибка загрузки"
 
 # @ woo_bip
-#: functions/functions.php:1018
+#: functions/functions.php:1063
 msgid "import file column validation failed"
 msgstr "Проверка колонки импорта прервана"
 
 # @ woo_bip
-#: functions/functions.php:1019
+#: functions/functions.php:1064
 msgid "Import cancelled"
 msgstr "Импорт прерван"
 
 # @ woo_bip
-#: functions/functions.php:1023
+#: functions/functions.php:1068
 msgid "sufficient data was provided"
 msgstr "Было предоставлено достаточно данных"
 
 # @ woo_bip
-#: functions/functions.php:1024
+#: functions/functions.php:1069
 msgid "Beginning import..."
 msgstr "Начинаем импорт..."
 
 # @ woo_bip
-#: functions/functions.php:1027
+#: functions/functions.php:1072
 msgid ""
 "PID debugging mode is enabled, no record changes will be made till "
 "WOO_BIP_DEBUG is de-activated from product-importer.php on line #22"
@@ -733,22 +828,22 @@ msgstr ""
 "деактивировано в product-importer.php на строке #22"
 
 # @ woo_bip
-#: functions/functions.php:1029
+#: functions/functions.php:1074
 msgid "Detect and group Product columns..."
 msgstr "Обнаруживаем и группируем колонки товара"
 
 # @ woo_bip
-#: functions/functions.php:1036
+#: functions/functions.php:1081
 msgid "SKU has been detected and grouped"
 msgstr "Партномер был обнаружен и сгруппирован"
 
 # @ woo_bip
-#: functions/functions.php:1045
+#: functions/functions.php:1090
 msgid "Product Name has been detected and grouped"
 msgstr "Название товара было обнаружено и сгруппировано"
 
 # @ woo_bip
-#: functions/functions.php:1049
+#: functions/functions.php:1094
 msgid ""
 "The SKU or Product Name column depending on the import method chosen must be "
 "selected to process an import."
@@ -757,62 +852,62 @@ msgstr ""
 "импорта должны быть выбраны чтобы осуществить импорт"
 
 # @ woo_bip
-#: functions/functions.php:1055
+#: functions/functions.php:1100
 msgid "Description has been detected and grouped"
 msgstr "Описание было обнаружено и сгруппировано"
 
-#: functions/functions.php:1060
+#: functions/functions.php:1105
 msgid "Price has been detected and grouped"
 msgstr "Цена была переведена и сгруппирована"
 
-#: functions/functions.php:1065
-msgid "Vendor has been detected and grouped"
-msgstr "Производитель был обнаружено и сгруппировано"
+#: functions/functions.php:1110
+msgid "Brands has been detected and grouped"
+msgstr "Производители был обнаружены и сгруппированы"
 
-#: functions/functions.php:1070
+#: functions/functions.php:1115
 msgid "Supplier Code has been detected and grouped"
 msgstr "Код поставщика был обнаружен и сгруппирован"
 
-#: functions/functions.php:1075
+#: functions/functions.php:1120
 msgid "Warranty has been detected and grouped"
 msgstr "Гарантия была обнаружена и сгруппирована"
 
 # @ woo_bip
-#: functions/functions.php:1080
+#: functions/functions.php:1125
 msgid "Category has been detected and grouped"
 msgstr "Категория была обнаружена и сгруппирована"
 
 # @ woo_bip
-#: functions/functions.php:1083
+#: functions/functions.php:1128
 msgid "Tag has been detected and grouped"
 msgstr "Метка была обнаружена и сгруппирована"
 
-#: functions/functions.php:1088
+#: functions/functions.php:1133
 msgid "Product URL has been detected and grouped"
 msgstr "URL товара была обнаружена и сгруппирована"
 
-#: functions/functions.php:1096
+#: functions/functions.php:1141
 msgid "All in One SEO Pack - Keywords has been detected"
 msgstr "All in One SEO Pack - Ключевые слова были обнаружены"
 
-#: functions/functions.php:1101
+#: functions/functions.php:1146
 msgid "All in One SEO Pack - Description has been detected"
 msgstr "All in One SEO Pack - Описание было обнаружено"
 
-#: functions/functions.php:1106
+#: functions/functions.php:1151
 msgid "All in One SEO Pack - Title has been detected"
 msgstr "All in One SEO Pack - Заголовок был обнаружен"
 
-#: functions/functions.php:1111
+#: functions/functions.php:1156
 msgid "All in One SEO Pack - Title Attributes has been detected"
 msgstr "All in One SEO Pack - Аттрибуты заголовка были обнаружены"
 
-#: functions/functions.php:1116
+#: functions/functions.php:1161
 msgid "All in One SEO Pack - Menu Label has been detected"
 msgstr "All in One SEO Pack - Метки меню были обнаружены"
 
 # @ woo_bip
-#: functions/functions.php:1147
+#: functions/functions.php:1192
 msgid ""
 "You must provide a minimum of Product Title to create new Products, hit "
 "Return to options screen to assign this column"
@@ -821,7 +916,7 @@ msgstr ""
 "товар, вернитесь к экрану настроек и укажите колонку"
 
 # @ woo_bip
-#: functions/functions.php:1150
+#: functions/functions.php:1195
 msgid ""
 "No specific reason was given for why the provided columns from this import "
 "file could not be validated, please raise this as a Premium Support issue "
@@ -832,58 +927,58 @@ msgstr ""
 "как вопрос поддержки с нашей командой :)"
 
 # @ woo_bip
-#: functions/functions.php:1154
+#: functions/functions.php:1199
 msgid "Import validation failed"
 msgstr "Ошибка проверки импорта"
 
 # @ woo_bip
-#: functions/functions.php:1155
+#: functions/functions.php:1200
 #, php-format
 msgid "Import validation issue: %s"
 msgstr "Проблема проверки импорта: %s"
 
 # @ woo_bip
-#: functions/functions.php:1216
+#: functions/functions.php:1261
 msgid "Temporary CSV deleted"
 msgstr "Временный файл CSV удален"
 
 # @ woo_bip
-#: functions/functions.php:1264
+#: functions/functions.php:1309
 msgid "1 second"
 msgstr "1 секунда"
 
 # @ woo_bip
-#: functions/functions.php:1267
+#: functions/functions.php:1312
 msgid "year"
 msgstr "год"
 
 # @ woo_bip
-#: functions/functions.php:1268
+#: functions/functions.php:1313
 msgid "month"
 msgstr "месяц"
 
 # @ woo_bip
-#: functions/functions.php:1269
+#: functions/functions.php:1314
 msgid "week"
 msgstr "неделя"
 
 # @ woo_bip
-#: functions/functions.php:1270
+#: functions/functions.php:1315
 msgid "day"
 msgstr "день"
 
 # @ woo_bip
-#: functions/functions.php:1271
+#: functions/functions.php:1316
 msgid "hour"
 msgstr "час"
 
 # @ woo_bip
-#: functions/functions.php:1272
+#: functions/functions.php:1317
 msgid "minute"
 msgstr "минута"
 
 # @ woo_bip
-#: functions/functions.php:1273
+#: functions/functions.php:1318
 msgid "second"
 msgstr "секунда"
 
@@ -915,10 +1010,6 @@ msgstr "Категория"
 #: functions/product.php:35
 msgid "Product URL"
 msgstr "Ссылка на товар"
-
-#: functions/product.php:40
-msgid "Vendor"
-msgstr "Производитель"
 
 #: functions/product.php:45
 msgid "Supplier Code"
@@ -958,169 +1049,165 @@ msgid "Getting Image file: "
 msgstr "Получаем файл изображения:"
 
 # @ woo_bip
-#: functions/product.php:323
+#: functions/product.php:322
 msgid "A duplicate SKU already exists."
 msgstr "Дублированный Партномер уже существует"
 
 # @ woo_bip
-#: functions/product.php:326
+#: functions/product.php:325
 msgid "No specific reason was given, raise this as a Support issue."
 msgstr ""
 "Никаких конкретных причин не было дано, задать этот вопрос разработчику"
 
-#: functions/product.php:412
+#: functions/product.php:408
 #, php-format
 msgid "Could not save the Product, $post_data: %s | $product: %s"
 msgstr "Не возможно сохранить товар, $post_data: %s | $product: %s"
 
-#: functions/product.php:472
+#: functions/product.php:467
 #, php-format
 msgid "Setting Supplier Price: %s"
 msgstr "Устанавливаем цену поставщика: %s"
 
-#: functions/product.php:474
+#: functions/product.php:469
 msgid "Setting Supplier Price"
 msgstr "Устанавливаем цену поставщика"
 
-#: functions/product.php:476
+#: functions/product.php:471
 msgid "Skipping Supplier Price"
 msgstr "Пропущена цена поставщика"
 
 # @ woo_bip
-#: functions/product.php:487
+#: functions/product.php:482
 #, php-format
 msgid "Setting SKU: %s"
 msgstr "Устанавливаем партномер: %s"
 
 # @ woo_bip
-#: functions/product.php:489
+#: functions/product.php:484
 msgid "Setting SKU"
 msgstr "Устанавливаем партномер"
 
 # @ woo_bip
-#: functions/product.php:491
+#: functions/product.php:486
 msgid "Skipping SKU"
 msgstr "Пропущен партномер"
 
 # @ woo_bip
-#: functions/product.php:502
+#: functions/product.php:497
 #, php-format
 msgid "Setting Price: %s"
 msgstr "Устанавливаем цену: %s"
 
 # @ woo_bip
-#: functions/product.php:504
+#: functions/product.php:499
 msgid "Setting Price"
 msgstr "Устанавливаем цену"
 
 # @ woo_bip
-#: functions/product.php:506
+#: functions/product.php:501
 msgid "Skipping Price"
 msgstr "Пропущена цена"
 
-#: functions/product.php:516
-#, php-format
-msgid "Setting Vendor: %s"
-msgstr "Устанавливаем производителя: %s"
-
-#: functions/product.php:518
-msgid "Setting Vendor"
-msgstr "Устанавливаем производителя"
-
-#: functions/product.php:520
-msgid "Skipping Vendor"
-msgstr "Пропущен производитель"
-
-#: functions/product.php:530
+#: functions/product.php:511
 #, php-format
 msgid "Setting Supplier Code: %s"
 msgstr "Устанавливаем код поставщика: %s"
 
-#: functions/product.php:532
+#: functions/product.php:513
 msgid "Setting Supplier Code"
 msgstr "Устанавливаем код поставщика"
 
-#: functions/product.php:534
+#: functions/product.php:515
 msgid "Skipping Supplier Code"
 msgstr "Пропущен код поставщика"
 
-#: functions/product.php:544
+#: functions/product.php:525
 #, php-format
 msgid "Setting Warranty: %s"
 msgstr "Устанавливаем гарантию: %s"
 
-#: functions/product.php:546
+#: functions/product.php:527
 msgid "Setting Warranty"
 msgstr "Устанавливаем гарантию"
 
-#: functions/product.php:548
+#: functions/product.php:529
 msgid "Skipping Warranty"
 msgstr "Пропущена гарантия"
 
-#: functions/product.php:564
+#: functions/product.php:546
 #, php-format
 msgid "Setting Images and Long Description from: %s"
 msgstr "Устанавливаем Изображение и Длинное описание из : %s"
 
-#: functions/product.php:566
+#: functions/product.php:548
 msgid "Setting Images and Long Description"
 msgstr "Устанавливаем Изображение и Длинное описание"
 
-#: functions/product.php:568
+#: functions/product.php:550
 msgid "Skipping Images and Long Description"
 msgstr "Пропускаем Изображение и Длинное описание"
 
+#: functions/product.php:582 functions/product.php:584
+#, php-format
+msgid "Linking Brands: %s"
+msgstr "Связываем производителя: %s"
+
+#: functions/product.php:587 functions/product.php:589
+msgid "Linking Brands"
+msgstr "Связываем производителя"
+
 # @ woo_bip
-#: functions/product.php:578
+#: functions/product.php:599
 #, php-format
 msgid "Linking Category: %s"
 msgstr "Связываем категорию: %s"
 
 # @ woo_bip
-#: functions/product.php:580
+#: functions/product.php:601
 #, php-format
 msgid "Linking Categories: %s"
 msgstr "Связываем категории: %s"
 
 # @ woo_bip
-#: functions/product.php:583
+#: functions/product.php:604
 msgid "Linking Category"
 msgstr "Связываем категорию"
 
 # @ woo_bip
-#: functions/product.php:585
+#: functions/product.php:606
 msgid "Linking Categories"
 msgstr "Связываем категории"
 
 # @ woo_bip
-#: functions/product.php:588
+#: functions/product.php:609
 msgid "Skipping Category"
 msgstr "Пропущена категория"
 
 # @ woo_bip
-#: functions/product.php:598
+#: functions/product.php:619
 #, php-format
 msgid "Linking Tag: %s"
 msgstr "Связываем метку: %s"
 
 # @ woo_bip
-#: functions/product.php:600
+#: functions/product.php:621
 #, php-format
 msgid "Linking Tags: %s"
 msgstr "Связываем метки: %s"
 
 # @ woo_bip
-#: functions/product.php:603
+#: functions/product.php:624
 msgid "Linking Tag"
 msgstr "Связываем метку"
 
 # @ woo_bip
-#: functions/product.php:605
+#: functions/product.php:626
 msgid "Linking Tags"
 msgstr "Связываем метки"
 
 # @ woo_bip
-#: functions/product.php:608
+#: functions/product.php:629
 msgid "Skipping Tag"
 msgstr "Метка пропущена"
 
@@ -1351,29 +1438,53 @@ msgstr "Обновлять только цены"
 msgid "Updates only supplier price for existing products."
 msgstr "Обновляет только цены поставщика для существующих товаров"
 
+#: templates/import_upload.php:58
+msgid "Parsing data from internet"
+msgstr "Загружать данные из интернета"
+
+#: templates/import_upload.php:59
+msgid "Update data from supplier site for existing products."
+msgstr "Обновлять данные с сайта поставщика для существующих товаров"
+
+#: templates/import_upload.php:62
+msgid "Insert Brands how taxonomies"
+msgstr "Вставить Производителя как таксономию"
+
+#: templates/import_upload.php:63
+msgid "Add taxonomy field for Product brand."
+msgstr "Добавить поле таксономии для Производителя товара"
+
+#: templates/import_upload.php:66
+msgid "Insert Brands how attributes"
+msgstr "Вставить Производителя как атрибут"
+
+#: templates/import_upload.php:67
+msgid "Add attribute field for Product brand."
+msgstr "Добавить поле атрибута для Производителя товара"
+
 # @ woo_bip
-#: templates/import_upload.php:60 templates/tabs-settings.php:52
+#: templates/import_upload.php:72 templates/tabs-settings.php:52
 msgid "Script timeout"
 msgstr "Тайм-аут скрипта"
 
 # @ woo_bip
-#: templates/import_upload.php:62 templates/import_upload.php:63
+#: templates/import_upload.php:74 templates/import_upload.php:75
 #, php-format
 msgid "%d minutes"
 msgstr "%d минут"
 
 # @ woo_bip
-#: templates/import_upload.php:64
+#: templates/import_upload.php:76
 #, php-format
 msgid "%d hour"
 msgstr "%d часов"
 
 # @ woo_bip
-#: templates/import_upload.php:65 templates/tabs-settings.php:59
+#: templates/import_upload.php:77 templates/tabs-settings.php:59
 msgid "Unlimited"
 msgstr "Неограничено"
 
-#: templates/import_upload.php:67
+#: templates/import_upload.php:79
 msgid ""
 "Script timeout defines how long Brain Import Price is 'allowed' to process "
 "your CSV file, once the time limit is reached the import process halts. "
@@ -1384,12 +1495,12 @@ msgstr ""
 "импорта останавливается. По умолчанию составляет 10 минут."
 
 # @ woo_bip
-#: templates/import_upload.php:86 templates/tabs-import.php:61
+#: templates/import_upload.php:98 templates/tabs-import.php:61
 msgid "Upload file and import"
 msgstr "Загрузить файл и импортировать"
 
 # @ woo_bip
-#: templates/import_upload.php:88
+#: templates/import_upload.php:100
 #, php-format
 msgid ""
 "<strong>Note</strong>: If the following screen goes blank simply hit your "
@@ -1672,12 +1783,30 @@ msgstr "Обзор"
 msgid "Prices"
 msgstr "Цены"
 
+#~ msgid "Skipping Brands"
+#~ msgstr "Пропущен производитель"
+
 # @ woo_bip
 #~ msgid "Skipped Category: %s"
 #~ msgstr "Пропущена категория: %s"
 
 #~ msgid "Skipped Categories "
 #~ msgstr "Пропущенные категории"
+
+#~ msgid "Vendor has been detected and grouped"
+#~ msgstr "Производитель был обнаружено и сгруппировано"
+
+#~ msgid "Vendor"
+#~ msgstr "Производитель"
+
+#~ msgid "Setting Vendor: %s"
+#~ msgstr "Устанавливаем производителя: %s"
+
+#~ msgid "Setting Vendor"
+#~ msgstr "Устанавливаем производителя"
+
+#~ msgid "Skipping Vendor"
+#~ msgstr "Пропущен производитель"
 
 # @ woo_bip
 #~ msgid "Product Category separator"

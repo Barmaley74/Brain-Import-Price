@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0a0acc97-75c4-4943-9ada-51196bdfb0a1" name="Default" comment="" />
+    <ignored path="brain-import.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="brain-import" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="product.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/product.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="50.692307" vertical-offset="9155" max-vertical-offset="10948">
+              <caret line="461" column="13" selection-start-line="461" selection-start-column="13" selection-end-line="461" selection-end-column="13" />
+              <folding>
+                <marker date="1434379011564" expanded="true" signature="14135:14221" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+                <marker date="1434379011564" expanded="true" signature="14135:14243" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="brands.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/brands.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.846153" vertical-offset="647" max-vertical-offset="1462">
+              <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+              <folding>
+                <marker date="1433950516508" expanded="true" signature="2796:3037" placeholder="SELECT terms..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tabs-price.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/tabs-price.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="13.076923" vertical-offset="510" max-vertical-offset="1547">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="category.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/category.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-23.5" vertical-offset="562" max-vertical-offset="1377">
+              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+              <folding>
+                <marker date="1433429887934" expanded="true" signature="2282:2523" placeholder="SELECT terms..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wcm_brands.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/wcm_brands.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.576923" vertical-offset="375" max-vertical-offset="1190">
+              <caret line="52" column="81" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="81" />
+              <folding>
+                <marker date="1433949919160" expanded="true" signature="1578:1684" placeholder="SELECT attri.._wpdb_prefix_woocommerce_attribute_taxonomies WHERE..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/functions/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6965241" vertical-offset="21477" max-vertical-offset="22576">
+              <caret line="1404" column="0" selection-start-line="1404" selection-start-column="0" selection-end-line="1404" selection-end-column="0" />
+              <folding>
+                <element signature="n#woo_bip_format_upload_error_code#0;n#!!top" expanded="false" />
+                <element signature="n#woo_bip_detect_file_delimiter#0;n#!!top" expanded="false" />
+                <element signature="n#woo_bip_delete_file#0;n#!!top" expanded="false" />
+                <element signature="n#woo_bip_current_memory_usage#0;n#!!top" expanded="false" />
+                <element signature="n#woo_bip_strposa#0;n#!!top" expanded="false" />
+                <element signature="n#woo_bip_display_time_elapsed#0;n#!!top" expanded="false" />
+                <element signature="n#woo_bip_get_option#0;n#!!top" expanded="false" />
+                <marker date="1434454003360" expanded="false" signature="1180:1192" placeholder="..." />
+                <marker date="1434454003360" expanded="false" signature="2006:2018" placeholder="..." />
+                <marker date="1434454003360" expanded="false" signature="2837:2849" placeholder="..." />
+                <marker date="1434454003360" expanded="false" signature="3642:3654" placeholder="..." />
+                <marker date="1434454003360" expanded="false" signature="4535:4547" placeholder="..." />
+                <marker date="1434454003360" expanded="false" signature="5362:5374" placeholder="..." />
+                <marker date="1434454003360" expanded="true" signature="59780:59878" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+                <marker date="1434454003360" expanded="true" signature="59780:59921" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+                <marker date="1434454003360" expanded="true" signature="59780:60005" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+                <marker date="1434454003360" expanded="true" signature="60358:60433" placeholder="SELECT `post..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="true" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/brain-import.php" />
+        <option value="$PROJECT_DIR$/templates/import.css" />
+        <option value="$PROJECT_DIR$/functions/widgets.php" />
+        <option value="$PROJECT_DIR$/templates/import_finish.php" />
+        <option value="$PROJECT_DIR$/templates/tabs-tools.php" />
+        <option value="$PROJECT_DIR$/templates/import_save.php" />
+        <option value="$PROJECT_DIR$/readme.txt" />
+        <option value="$PROJECT_DIR$/templates/tabs-overview.php" />
+        <option value="$PROJECT_DIR$/functions/vendor.php" />
+        <option value="$PROJECT_DIR$/templates/admin.css" />
+        <option value="$PROJECT_DIR$/functions/common.php" />
+        <option value="$PROJECT_DIR$/js/toggleblock.js" />
+        <option value="$PROJECT_DIR$/include/config.php" />
+        <option value="$PROJECT_DIR$/woo_bip-ru_RU.po" />
+        <option value="$PROJECT_DIR$/templates/tabs.php" />
+        <option value="$PROJECT_DIR$/templates/tabs-price.php" />
+        <option value="$PROJECT_DIR$/classes/simple_html_dom.php" />
+        <option value="$PROJECT_DIR$/functions/admin.php" />
+        <option value="$PROJECT_DIR$/templates/tabs-settings.php" />
+        <option value="$PROJECT_DIR$/js/engine.js" />
+        <option value="$PROJECT_DIR$/functions/category.php" />
+        <option value="$PROJECT_DIR$/functions/tag.php" />
+        <option value="$PROJECT_DIR$/templates/tabs-import.php" />
+        <option value="$PROJECT_DIR$/templates/import_upload.php" />
+        <option value="$PROJECT_DIR$/classes/sds_wcm_brands.php" />
+        <option value="$PROJECT_DIR$/brain-import-price.php" />
+        <option value="$PROJECT_DIR$/classes/wcm_brands.php" />
+        <option value="$PROJECT_DIR$/functions/brands.php" />
+        <option value="$PROJECT_DIR$/functions/product.php" />
+        <option value="$PROJECT_DIR$/functions/functions.php" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1176" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import-price" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import-price" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import-price" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import-price" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import-price" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brain-import-price" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\wptest\wp-content\plugins\brain-import-price\functions" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-env-vars>false</pass-parent-env-vars>
+      <envs />
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0a0acc97-75c4-4943-9ada-51196bdfb0a1" name="Default" comment="" />
+      <created>1430454009921</created>
+      <option name="number" value="Default" />
+      <updated>1430454009921</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19330144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13272922" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19330144" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25749063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12864584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="WordPressConfiguration" enabled="true">
+    <wordpressPath>D:\xampp\htdocs\wptest</wordpressPath>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="14" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/functions/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9131" max-vertical-offset="10863">
+          <caret line="570" column="0" selection-start-line="570" selection-start-column="0" selection-end-line="570" selection-end-column="0" />
+          <folding>
+            <marker date="1434379011564" expanded="true" signature="14135:14221" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+            <marker date="1434379011564" expanded="true" signature="14135:14243" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/brands.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="1462">
+          <caret line="42" column="100" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="100" />
+          <folding>
+            <marker date="1433950516508" expanded="true" signature="2796:3037" placeholder="SELECT terms..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/wcm_brands.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1433949919160" expanded="true" signature="1578:1684" placeholder="SELECT attri.._wpdb_prefix_woocommerce_attribute_taxonomies WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="562" max-vertical-offset="1377">
+          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+          <folding>
+            <marker date="1433429887934" expanded="true" signature="2282:2523" placeholder="SELECT terms..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4375" max-vertical-offset="22406">
+          <caret line="273" column="42" selection-start-line="273" selection-start-column="25" selection-end-line="273" selection-end-column="42" />
+          <folding>
+            <element signature="n#woo_bip_format_upload_error_code#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_detect_file_delimiter#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_delete_file#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_current_memory_usage#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_strposa#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_display_time_elapsed#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_get_option#0;n#!!top" expanded="false" />
+            <marker date="1434454003360" expanded="false" signature="1180:1192" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2006:2018" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2837:2849" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="3642:3654" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="4535:4547" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="5362:5374" placeholder="..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59878" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59921" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:60005" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="60358:60433" placeholder="SELECT `post..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9303" max-vertical-offset="10523">
+          <caret line="613" column="0" selection-start-line="613" selection-start-column="0" selection-end-line="613" selection-end-column="0" />
+          <folding>
+            <marker date="1434379011564" expanded="true" signature="14135:14221" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+            <marker date="1434379011564" expanded="true" signature="14135:14243" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20689">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#woo_bip_format_upload_error_code#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_detect_file_delimiter#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_delete_file#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_current_memory_usage#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_strposa#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_display_time_elapsed#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_get_option#0;n#!!top" expanded="false" />
+            <marker date="1434454003360" expanded="false" signature="1180:1192" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2006:2018" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2837:2849" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="3642:3654" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="4535:4547" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="5362:5374" placeholder="..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59878" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59921" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:60005" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="60358:60433" placeholder="SELECT `post..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="588" max-vertical-offset="1377">
+          <caret line="67" column="117" selection-start-line="67" selection-start-column="117" selection-end-line="67" selection-end-column="117" />
+          <folding>
+            <marker date="1433429887934" expanded="true" signature="2282:2523" placeholder="SELECT terms..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/brain-import-price.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3567" max-vertical-offset="4811">
+          <caret line="225" column="41" selection-start-line="225" selection-start-column="41" selection-end-line="225" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10489">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1434379011564" expanded="true" signature="14135:14221" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+            <marker date="1434379011564" expanded="true" signature="14135:14243" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8636" max-vertical-offset="19550">
+          <caret line="528" column="50" selection-start-line="528" selection-start-column="50" selection-end-line="528" selection-end-column="50" />
+          <folding>
+            <element signature="n#woo_bip_format_upload_error_code#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_detect_file_delimiter#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_delete_file#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_current_memory_usage#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_strposa#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_display_time_elapsed#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_get_option#0;n#!!top" expanded="false" />
+            <marker date="1434454003360" expanded="false" signature="1180:1192" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2006:2018" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2837:2849" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="3642:3654" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="4535:4547" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="5362:5374" placeholder="..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59878" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59921" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:60005" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="60358:60433" placeholder="SELECT `post..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/import_upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="507" max-vertical-offset="1649">
+          <caret line="45" column="111" selection-start-line="45" selection-start-column="111" selection-end-line="45" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/tag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="1938">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/brain-import-price.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2284" max-vertical-offset="4811">
+          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10387">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1434379011564" expanded="true" signature="14135:14221" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+            <marker date="1434379011564" expanded="true" signature="14135:14243" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8489" max-vertical-offset="19465">
+          <caret line="515" column="37" selection-start-line="515" selection-start-column="37" selection-end-line="515" selection-end-column="37" />
+          <folding>
+            <element signature="n#woo_bip_format_upload_error_code#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_detect_file_delimiter#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_delete_file#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_current_memory_usage#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_strposa#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_display_time_elapsed#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_get_option#0;n#!!top" expanded="false" />
+            <marker date="1434454003360" expanded="false" signature="1180:1192" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2006:2018" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2837:2849" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="3642:3654" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="4535:4547" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="5362:5374" placeholder="..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59878" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59921" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:60005" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="60358:60433" placeholder="SELECT `post..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/tag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="1938">
+          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/brain-import-price.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2963" max-vertical-offset="4862">
+          <caret line="202" column="32" selection-start-line="202" selection-start-column="32" selection-end-line="202" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="1020">
+          <caret line="249" column="46" selection-start-line="249" selection-start-column="46" selection-end-line="249" selection-end-column="46" />
+          <folding>
+            <marker date="1434379011564" expanded="true" signature="14135:14221" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+            <marker date="1434379011564" expanded="true" signature="14135:14243" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tabs-import.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2529" max-vertical-offset="3502">
+          <caret line="118" column="124" selection-start-line="118" selection-start-column="106" selection-end-line="118" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/import.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1441" max-vertical-offset="5576">
+          <caret line="98" column="19" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/license.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4879">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="697">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34592146" vertical-offset="3698" max-vertical-offset="18003">
+          <caret line="231" column="9" selection-start-line="231" selection-start-column="9" selection-end-line="231" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/import_finish.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.305136" vertical-offset="37" max-vertical-offset="1037">
+          <caret line="53" column="113" selection-start-line="53" selection-start-column="113" selection-end-line="53" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/progress.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="75832" max-vertical-offset="164237">
+          <caret line="4486" column="8" selection-start-line="4486" selection-start-column="8" selection-end-line="4486" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29905277" vertical-offset="0" max-vertical-offset="748">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/toggleblock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/import.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="0" max-vertical-offset="816">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ajaxupload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2737">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/woo_bip-ru_RU.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3129" max-vertical-offset="34391">
+          <caret line="200" column="7" selection-start-line="200" selection-start-column="7" selection-end-line="200" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="306">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/simple_html_dom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.346153" vertical-offset="408" max-vertical-offset="29087">
+          <caret line="87" column="1" selection-start-line="87" selection-start-column="1" selection-end-line="87" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.423077" vertical-offset="2942" max-vertical-offset="5525">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tabs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="289">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tabs-settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1649">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/engine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.892857" vertical-offset="879" max-vertical-offset="6001">
+          <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tabs-overview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47401774" vertical-offset="0" max-vertical-offset="789">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tabs-import.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.115385" vertical-offset="975" max-vertical-offset="2533">
+          <caret line="82" column="61" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/brain-import-price.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43814433" vertical-offset="0" max-vertical-offset="4692">
+          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/tag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82654405" vertical-offset="1088" max-vertical-offset="1938">
+          <caret line="101" column="97" selection-start-line="101" selection-start-column="97" selection-end-line="101" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../sr/wp-content/themes/oxy/js/jquery.flexslider-min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.017456358" vertical-offset="14" max-vertical-offset="816">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/import_save.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0" vertical-offset="218" max-vertical-offset="1020">
+          <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/import_upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74871135" vertical-offset="558" max-vertical-offset="1751">
+          <caret line="67" column="52" selection-start-line="67" selection-start-column="52" selection-end-line="67" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/brands.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.846153" vertical-offset="647" max-vertical-offset="1462">
+          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+          <folding>
+            <marker date="1433950516508" expanded="true" signature="2796:3037" placeholder="SELECT terms..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.5" vertical-offset="562" max-vertical-offset="1377">
+          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+          <folding>
+            <marker date="1433429887934" expanded="true" signature="2282:2523" placeholder="SELECT terms..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tabs-price.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.076923" vertical-offset="510" max-vertical-offset="1547">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/wcm_brands.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.576923" vertical-offset="375" max-vertical-offset="1190">
+          <caret line="52" column="81" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="81" />
+          <folding>
+            <marker date="1433949919160" expanded="true" signature="1578:1684" placeholder="SELECT attri.._wpdb_prefix_woocommerce_attribute_taxonomies WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="50.692307" vertical-offset="9155" max-vertical-offset="10948">
+          <caret line="461" column="13" selection-start-line="461" selection-start-column="13" selection-end-line="461" selection-end-column="13" />
+          <folding>
+            <marker date="1434379011564" expanded="true" signature="14135:14221" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+            <marker date="1434379011564" expanded="true" signature="14135:14243" placeholder="SELECT post_.._wpdb_prefix_postmeta WHERE..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6965241" vertical-offset="21477" max-vertical-offset="22576">
+          <caret line="1404" column="0" selection-start-line="1404" selection-start-column="0" selection-end-line="1404" selection-end-column="0" />
+          <folding>
+            <element signature="n#woo_bip_format_upload_error_code#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_detect_file_delimiter#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_delete_file#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_current_memory_usage#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_strposa#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_display_time_elapsed#0;n#!!top" expanded="false" />
+            <element signature="n#woo_bip_get_option#0;n#!!top" expanded="false" />
+            <marker date="1434454003360" expanded="false" signature="1180:1192" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2006:2018" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="2837:2849" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="3642:3654" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="4535:4547" placeholder="..." />
+            <marker date="1434454003360" expanded="false" signature="5362:5374" placeholder="..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59878" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:59921" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="59780:60005" placeholder="SELECT t1.po.._wpdb_prefix_postmeta AS..." />
+            <marker date="1434454003360" expanded="true" signature="60358:60433" placeholder="SELECT `post..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

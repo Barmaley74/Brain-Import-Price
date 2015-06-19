@@ -55,6 +55,18 @@
                                         <p class="description"><?php _e( 'Updates only supplier price for existing products.', 'woo_bip' ); ?></p>
                                     </li>
                                     <li>
+                                        <label><input type="checkbox" name="parsing_data"<?php checked( $import->parsing_data, 1 ); ?> value="1" />&nbsp;<?php _e( 'Parsing data from internet', 'woo_bip' ); ?></label>
+                                        <p class="description"><?php _e( 'Update data from supplier site for existing products.', 'woo_bip' ); ?></p>
+                                    </li>
+                                    <li>
+                                        <label><input type="checkbox" name="brands_taxonomies"<?php checked( $import->brands_taxonomies, 1 ); ?> value="1" />&nbsp;<?php _e( 'Insert Brands how taxonomies', 'woo_bip' ); ?></label>
+                                        <p class="description"><?php _e( 'Add taxonomy field for Product brand.', 'woo_bip' ); ?></p>
+                                    </li>
+                                    <li>
+                                        <label><input type="checkbox" name="brands_attributes"<?php checked( $import->brands_attributes, 1 ); ?> value="1" />&nbsp;<?php _e( 'Insert Brands how attributes', 'woo_bip' ); ?></label>
+                                        <p class="description"><?php _e( 'Add attribute field for Product brand.', 'woo_bip' ); ?></p>
+                                    </li>
+                                    <li>
 <?php if( !ini_get( 'safe_mode' ) ) { ?>
 									<li>
 										<label for="timeout"><?php _e( 'Script timeout', 'woo_bip' ); ?>: </label>
