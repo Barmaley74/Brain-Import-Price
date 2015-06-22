@@ -145,7 +145,7 @@ function woo_bip_parsing( $ID, $url, $name )
         // Первое фото
     if ($html !== false) {
         $gallery = '';
-        foreach ($html->find('.active') as $list_img) {
+        foreach ($html->find('.active') as $el) {
             if (strstr($el->href, 'jpg')) {
                 // выводим их значение атрибута href
                 $gallery = woo_bip_set_image($ID, $el->href, $gallery);
@@ -167,7 +167,6 @@ function woo_bip_parsing( $ID, $url, $name )
 
         // Founded a long description
         // Находим длинное описание
-        foreach ($html->find('.description') as $el) {
             foreach ($html->find('.description') as $el) {
                 // Remove unnecessary phrases and symbols
                 // Убираем ненужные фразы и символы
@@ -176,8 +175,6 @@ function woo_bip_parsing( $ID, $url, $name )
                     $descrptn = str_replace($excludes[$i], ' ', $descrptn);
                 $descrptn = str_replace($name, ' ', $descrptn);
             }
-
-        }
 
         // Cleans up after itself
         // Подчищаем за собой
